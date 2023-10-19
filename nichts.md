@@ -1,0 +1,1 @@
+hier gehts zurück zum [[Obsidian Math Cheat Sheet]]

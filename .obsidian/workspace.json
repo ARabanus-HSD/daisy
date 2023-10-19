@@ -1,0 +1,184 @@
+{
+  "main": {
+    "id": "4b21ca6213cad6c4",
+    "type": "split",
+    "children": [
+      {
+        "id": "e17bde9a73334c11",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "819f3567aef1d022",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Mathe DKSI/Mathe DSKI - Vorlesung.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "3bde4e7a3c63afac",
+    "type": "split",
+    "children": [
+      {
+        "id": "2543ced7f8997f23",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "788252a39a3164b8",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "645dab256c24b1a9",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "744b01e5212b2db8",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "c849adc9bb177bf5",
+    "type": "split",
+    "children": [
+      {
+        "id": "451bc02fdb8cd652",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0c5047b64f01adee",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Mathe DKSI/Mathe DSKI - Vorlesung.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "81cfb423f45038a3",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Mathe DKSI/Mathe DSKI - Vorlesung.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "c61d8302a224124f",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "1e548161044ed5c7",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Mathe DKSI/Mathe DSKI - Vorlesung.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "819f3567aef1d022",
+  "lastOpenFiles": [
+    "Prog DSKI/Prog DSKI - Praktikum.md",
+    "Prog DSKI/Prog DSKI - Übung.md",
+    "Prog DSKI/Prog DSKI - Vorlesung.md",
+    "Mathe DKSI/Mathe DSKI - Vorlesung.md",
+    "Pasted image 20231004141934.png",
+    "Pasted image 20231004141904.png",
+    "Pasted image 20231004141049.png",
+    "Obsidian Math Cheat Sheet.md",
+    "+ Bücher und Literatur/UbiquitousComputFundamen.pdf",
+    "UbiComp/Teil-1_Einführung.pdf",
+    "nichts.md",
+    "UbiComp/UbiComp - Vorlesung.md",
+    "UbiComp/UbiComp - Übung.md",
+    "UbiComp/UbiComp - Praktikum.md",
+    "Mathe DKSI/Mathe DSKI - Praktikum.md",
+    "+ Bücher und Literatur",
+    "UbiComp/Unconfirmed 236991.crdownload",
+    "UbiComp/UbiComp_ZDD_DAISY_Schwung_Teil-10_Hardwarearchitekturen.pdf",
+    "UbiComp/Unconfirmed 305376.crdownload",
+    "UbiComp/UbiComp_ZDD_DAISY_Schwung_Teil-9_IWLAN_Bluetooth_Zigbee.pdf",
+    "UbiComp/Unconfirmed 592207.crdownload",
+    "UbiComp/UbiComp_ZDD_DAISY_Schwung_Teil-8_OPC-UA_MQTT.pdf",
+    "UbiComp/Unconfirmed 959052.crdownload",
+    "Potenz.md",
+    "Nachschlagwerke divers/Untitled.md",
+    "IntlSys/IntlSys - Vorlesung.md",
+    "InfVis/InfVis - Vorlesung.md",
+    "InfVis/InfVis - Übung.md",
+    "InfVis/InfVis - Praktikum.md",
+    "Mathe DKSI/Mathe DSKI - Übung.md",
+    "IntlSys/IntlSys - Übung.md",
+    "IntlSys/IntlSys - Praktikum.md"
+  ]
+}
