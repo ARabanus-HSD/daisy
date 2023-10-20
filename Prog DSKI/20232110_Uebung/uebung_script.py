@@ -27,7 +27,7 @@
 
 # ------------ PT 2 ------------ 
 
-def low_plus_high(numbers: list) -> int:
+def low_plus_high(numbers: list, min: int=0) -> int:
     '''
     Es soll ein Mindestwert mit default-Wert gesetzt gegeben und gesetzt werden
     Ist der kleinste Wert in der Liste kleiner als der Mindestwert, wird der Mindeswert benutzt
@@ -36,17 +36,35 @@ def low_plus_high(numbers: list) -> int:
     :return: sum of (min or low) + high
     '''
     numbers.sort()
-    def set_to_min(value: int=numbers[0],min: int=0) -> int:
+    def set_to_min(value, min):
         """
         Overkill function to return either lowest value in list or min value given
         :param value: int lowest in list
-        :param min: int low threshold
         """
-        if value < min:
-            value = min           
-        return value
-    summe = set_to_min() + numbers[-1]
+        print(value)
+        if value >= min:
+            print(value)
+            return value
+        else:
+            return min
+        
+        # if value < min:
+        #     return min
+        # return value
+        
+    high = numbers[-1]
+    summe = set_to_min(numbers[0], min) + high
     return summe
 
-my_numbers = [2, -1, 15, 2, 7, -1, 4]
-print(low_plus_high(my_numbers))
+# my_numbers = [2, -1, 16, 2, 7]
+# print(low_plus_high(my_numbers, 10))
+
+# ------------ PT 3 ------------ 
+
+import random
+
+cards = ["Zehn", "Bube", "Dame", "Ass", "König"]
+
+print(random.choice(cards))
+random.shuffle(cards)
+print(cards)
