@@ -59,3 +59,29 @@ def pick_smallest(a, b):
 result = pick_smallest(7, 7)
 print(result) # --> 6
 
+# EXAMPLE 5 ------------------------------------------------------------------
+# Special functions
+
+# recursive Funktionen, meistens langsam, aber sollte man kenne
+
+def recur_factorial(n):
+   if n == 1:
+       return n
+   else:
+       return n*recur_factorial(n-1)
+   
+# lokale funkttionen (ähnlich wie lokale variablen) können nur innerhalb einer funktion aufgerufen werden
+
+def greeting(name):
+    def is_friend(name):
+        friend_list = ["tom", "luis"]
+        return name.lower() in friend_list
+    
+    if is_friend(name):
+        print(f"HeyyyYYYasdkfjnsd {name}!, i got tea")
+    else:
+        print(f"Hello {name}")
+
+greeting("Peter")
+greeting("Tom")
+# print(is_friend("Tom")) geht nicht, da is_friend eine lokale funktion
