@@ -25,3 +25,19 @@ def list_combiner(list_a: list, list_b: list) -> list:
     return combined_list
 
 print(list_combiner(list_1, list_2))
+
+
+
+# DEBUGGING
+
+def framed_print(input_str, frame_size, frame_symbol="#"):
+    """Put your print in the right frame.
+    """
+    string_length = len(input_str)
+    for _ in range(frame_size):
+        print((string_length + 2 + 2 * frame_size) * frame_symbol)
+    # print actual content
+    print(f"{frame_size * frame_symbol} {input_str} {frame_size * frame_symbol}")
+    for _ in range(frame_size):
+        print((string_length + 2 + 2 * frame_size) * frame_symbol)
+framed_print("yes this look awesome!", 3, ">")
