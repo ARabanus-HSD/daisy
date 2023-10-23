@@ -127,7 +127,7 @@ while True:
                 break
             elif action_3 == "b":
                 line_split()
-                reveal_string("Du siehst wie die Uhr tickt und tackt....")
+                reveal_string("Du siehst wie die Uhr, (5 Minuten vor 4, Nachmittags) tickt und tackt....")
                 for j in range(5):
                     time.sleep(1)
                     print("tick")
