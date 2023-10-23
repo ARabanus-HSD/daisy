@@ -68,3 +68,4 @@ cards = ["Zehn", "Bube", "Dame", "Ass", "König"]
 print(random.choice(cards))
 random.shuffle(cards)
 print(cards)
+print(random.uniform(10, 20))
