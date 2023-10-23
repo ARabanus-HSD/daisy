@@ -10,17 +10,23 @@ a) Ich betätige den Hebel b) Ich suche lieber noch weiter
 
 import time
 import random
+from PIL import Image
+import sys
 
 # def funky_string(string):
 #     for i in string:
 #         time.sleep(0.1)
 #         print(i, end="")
 
+
+
 def fifty_fifty():
     return random.randrange(2)
 
 def final_door():
     print("Du öffnest die Tür, spürst die Bergluft, fällst in den Bach und tauchst im Glanz des Wasserfalls.\n Am Ufer liegt ein versteckter Schatz, der deine Abenteuerlust belohnt.")
+    Image.open("/Documents/HSD/daisy/Prog DSKI/praktikum_progDSKI/Praktikum01/berge.jpg").show()
+    
    
 def line_split():
     for k in range(50):
