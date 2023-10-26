@@ -3,7 +3,7 @@ import pandas as pd
 from scipy.io import arff as sp
 
 # Aufgabe 1
-directory = "/home/arabanus/Documents/HSD/daisy/IntlSys/IntlSys_uebung/20231019_Praktikum/"
+directory = "/home/arabanus/Documents/HSD/daisy/IntlSys/IntlSys_uebung/kuerbiskerne_IntlSys/"
 xlsx_file = "Pumpkin_Seeds_Dataset.xlsx"
 arff_file = "Pumpkin_Seeds_Dataset.arff"
 
@@ -16,17 +16,16 @@ df_arff = pd.DataFrame(data)
 
 df_xlsx = pd.read_excel(xlsx_path)
 
+# print(df_arff)
+# print(df_xlsx)
 
-print(df_arff)
-print(df_xlsx)
 
-
-# Aufgabe 2: sind die dataframes identisch?
-if df_xlsx.equals(df_arff):
-    print("Diese Dataframes sind gleich")
-else:
-    print("Diese Columns sind nicht gleich")
-    print(df_xlsx.compare(df_arff, keep_equal=True))
+# # Aufgabe 2: sind die dataframes identisch?
+# if df_xlsx.equals(df_arff):
+#     print("Diese Dataframes sind gleich")
+# else:
+#     print("Diese Columns sind nicht gleich")
+#     print(df_xlsx.compare(df_arff, keep_equal=True))
 
 
 # # Concatenate dataframes df_arff and df_xlsx, dropping the 'Class' column from both
@@ -43,3 +42,45 @@ else:
 
 # # Print the unique records based on their index
 # print(df_comparison.reindex(idx_unique))
+
+
+isequal = df_arff == df_xlsx
+
+# kleine Zwischenaufgabe!
+# finden sie heraus ob in der in jeder
+# split into colums:
+# access single column
+
+
+
+def entry_comparison(input_dataframe):
+    """Input: pandas dataframe
+    this function iterates through each column, skips if all values are True
+    if there are any false values it checks each entry
+    Output:
+    numb
+    
+    """
+    false_entry_counter = 0
+    columncounter = 0
+    for column in range(len(input_dataframe.axes[1])):
+        single_column = input_dataframe.iloc[:, column]
+        columncounter = columncounter + 1
+        if single_column.all() == True:
+            print(f"{} in this column, everything is the same")
+        else:
+            print(f"not every value is the same in")
+            for entry in range(single_column.shape[0]):
+                entries = single_column.iloc[entry]
+
+                if entries == False:
+                    false_entry_counter = false_entry_counter + 1
+                else:
+                    print("nothing is wrong!")
+            return false_entry_counter, single_column.shape
+           
+a1, a2 = entry_comparison(isequal)
+print(f"{a1}/{a2} entries are false")
+            
+                
+            
