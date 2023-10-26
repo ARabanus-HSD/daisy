@@ -54,13 +54,7 @@ isequal = df_arff == df_xlsx
 
 
 def entry_comparison(input_dataframe1, input_dataframe2):
-    """Input: pandas dataframe
-    this function iterates through each column, skips if all values are True
-    if there are any false values it checks each entry
-    Output:
-    numb
-    
-    """
+
     isequal = input_dataframe1 == input_dataframe2
     
     false_entry_counter = 0
@@ -83,7 +77,6 @@ def entry_comparison(input_dataframe1, input_dataframe2):
                     print("nothing is wrong!")
             return false_entry_counter, single_column.shape
            
-
 a1, a2 = entry_comparison(df_arff, df_xlsx)
 print(f"{a1}/{a2} entries are false")
             
