@@ -1,4 +1,4 @@
-import pumpkin_seed_counting as haha_dalia_guck_mal_was_ich_kann
+import pumpkin_seed_counting as besser_als_all_func_von_pandas
 import os
 import pandas as pd
 from scipy.io import arff as sp
@@ -19,5 +19,5 @@ df_xlsx = pd.read_excel(xlsx_path)
 
 
 # einzeiler für Dalia
-a= haha_dalia_guck_mal_was_ich_kann(df_arff, df_xlsx)
+a= besser_als_all_func_von_pandas(df_arff, df_xlsx)
 print(f"{a[0]}/{a[1]} entries are false")
