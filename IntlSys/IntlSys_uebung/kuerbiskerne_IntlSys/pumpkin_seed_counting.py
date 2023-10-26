@@ -53,7 +53,7 @@ isequal = df_arff == df_xlsx
 
 
 
-def entry_comparison(input_dataframe):
+def entry_comparison(input_dataframe1, input_dataframe2):
     """Input: pandas dataframe
     this function iterates through each column, skips if all values are True
     if there are any false values it checks each entry
@@ -61,25 +61,30 @@ def entry_comparison(input_dataframe):
     numb
     
     """
+    isequal = input_dataframe1 == input_dataframe2
+    
     false_entry_counter = 0
-    columncounter = 0
-    for column in range(len(input_dataframe.axes[1])):
-        single_column = input_dataframe.iloc[:, column]
-        columncounter = columncounter + 1
+    column_counter = 0
+    for column in range(len(isequal.axes[1])):
+        single_column = isequal.iloc[:, column]
+        column_counter = column_counter + 1
         if single_column.all() == True:
-            print(f"{} in this column, everything is the same")
+            print(f"In column No. {column_counter}, everything is True")
         else:
-            print(f"not every value is the same in")
+            print(f"In column No. {column_counter}, there are False entries")
+            row_counter = 0
             for entry in range(single_column.shape[0]):
                 entries = single_column.iloc[entry]
-
+                row_counter = row_counter + 1
                 if entries == False:
                     false_entry_counter = false_entry_counter + 1
+                    print(f"False in row {row_counter}")
                 else:
                     print("nothing is wrong!")
             return false_entry_counter, single_column.shape
            
-a1, a2 = entry_comparison(isequal)
+
+a1, a2 = entry_comparison(df_arff, df_xlsx)
 print(f"{a1}/{a2} entries are false")
             
                 
