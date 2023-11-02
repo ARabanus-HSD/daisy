@@ -9,8 +9,10 @@ german_english_pairs = [("Name", "name"),
 ger_eng =  dict((ger, eng) for ger, eng in german_english_pairs)
 eng_ger =  dict((eng, ger) for ger, eng in german_english_pairs)
 
+print("C1:")
 print(ger_eng["Hörsaal"])
 print(eng_ger["college"])
+print("\n")
 
 # C2
 
@@ -49,12 +51,40 @@ def roll_the_dice_v2(n_rolls: int):
     
     for i in range(n_rolls):
         result = rnd.randint(1, 6)
-        dice_dict[result] =+ 1
+        dice_dict[result] += 1
     
     return dice_dict
 
+print("C2:")
 print(roll_the_dice_v1(1000))
 print(roll_the_dice_v2(1000))
+print("\n")
 
 
 # C3
+# delete_part_of_text = True
+def remove_strings(text: str, string_list: list) -> str:
+    """Removes all strings in strin_list from text
+    """
+    for i in range(len(string_list)):
+        if string_list[i] in text:
+            text = text.replace(string_list[i], "")
+    cleaned_string = text
+    # this returns the string with space in the begining
+    cleaned_string_wo_leading_space = cleaned_string.lstrip()
+    
+    return cleaned_string_wo_leading_space
+
+
+text_1 = "text for testing"
+string_list_1 = ["text", "four", "ing"]
+text_2 = "ja, nein, vielleicht"
+string_list_2 = ["ja", "nein", ","]
+text_3 = "Dann sagte ich: 'Ja, das geht.'"
+string_list_3 = ["\'", ".", ",", ":"]
+
+print("C3:")
+print(remove_strings(text_1, string_list_1))
+print(remove_strings(text_2, string_list_2))
+print(remove_strings(text_2, string_list_3))
+print("\n")
