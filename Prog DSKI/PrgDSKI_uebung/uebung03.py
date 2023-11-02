@@ -12,7 +12,7 @@ eng_ger =  dict((eng, ger) for ger, eng in german_english_pairs)
 print("C1:")
 print(ger_eng["Hörsaal"])
 print(eng_ger["college"])
-print("\n")
+print("")
 
 # C2
 
@@ -58,7 +58,7 @@ def roll_the_dice_v2(n_rolls: int):
 print("C2:")
 print(roll_the_dice_v1(1000))
 print(roll_the_dice_v2(1000))
-print("\n")
+print("")
 
 
 # C3
@@ -87,4 +87,4 @@ print("C3:")
 print(remove_strings(text_1, string_list_1))
 print(remove_strings(text_2, string_list_2))
 print(remove_strings(text_2, string_list_3))
-print("\n")
+print("")
