@@ -43,3 +43,10 @@ def caesar_encode(text, shift, alphabet="abcdefghijklmnopqrstuvwxyz"):
     return encoded_string
 
 print(caesar_encode("mein text!", shift=15)) # -> btxc itmi!
+
+
+
+
+
+# alternativ für das dict
+# my_dict = {index: letter for index, letter in enumerate(alphabet)}
