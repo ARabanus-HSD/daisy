@@ -1,5 +1,16 @@
+# es gibt die python lib 'duden', dafür braucht man Internet, das hab ich gerade nicht gehabt.
+# deshalb hier ein Platzhalter dictionary 
+mein_duden = ["apfel", "buch", "tisch", "haus", "stuhl", "auto", "fenster", "hund", "katze", "blume",
+              "computer", "telefon", "wasser", "luft", "feuer", "erde", "sonne", "mond", "sterne", "regen",
+              "schnee", "wind", "musik", "film", "schlecht", "farbe", "licht", "schatten", "wolke", "kaffee", "tee",
+              "zucker", "salz", "brot", "käse", "messer", "gabel", "löffel", "teller", "topf", "pfanne",
+              "kleid", "schuhe", "hut", "tasche", "uhr", "brille", "zahn", "auge", "ohr", "programm",
+              "fernseher", "lampe", "telefon", "taschenlampe", "regenschirm", "tasse", "teppich", "sessel", "kissen", 
+              "bett", "decke", "buchstabe", "zahl", "schlüssel", "schloss"]
+
+    
 # C1
-def caesar_encode(text, shift, alphabet="abcdefghijklmnopqrstuvwxyz"):
+def caesar_encode(text: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> str:
     """
     This is a Caesar cipher.
      Each letter in a message is shifted by *shift*
@@ -14,39 +25,55 @@ def caesar_encode(text, shift, alphabet="abcdefghijklmnopqrstuvwxyz"):
     alphabet:
     A string with all characters that should be shifted.
     """
-    # make a dictionary with letters a-z corresponding to 0-25 and vice versa
-    dict_alphabet_to_index = {}
-    dict_index_to_alphabet = {}
-    for index, letter in enumerate(alphabet):
-        dict_alphabet_to_index.__setitem__(letter, index)     
-    # print(dict_alphabet_to_index)
-    for index, letter in enumerate(alphabet):
-        dict_index_to_alphabet.__setitem__(index, letter)     
-    # print(dict_index_to_alphabet)
+    encoded_string = ""
     
-    # go though input string, make a list with numbers 0-25 for each letter
-    input_string_to_numbers = [dict_alphabet_to_index[letter] for letter in text if letter in dict_alphabet_to_index]
-    # print(input_string_to_numbers)
-    
-    # add shift offset using modulo
-    for i in range(len(input_string_to_numbers)):
-        input_string_to_numbers[i] = (input_string_to_numbers[i] + shift) % 26
-    # print(input_string_to_numbers)
-    
-    # make a new string from number list
-    encoded_string_list = [dict_index_to_alphabet[index] for index in input_string_to_numbers if index in dict_index_to_alphabet]
-    encoded_string = ''.join(encoded_string_list)
-
-    # add special characters back into the string!
-    
-    
+    for char in text:
+        if char in alphabet:
+            shifted_char_index = (alphabet.index(char) + shift) % len(alphabet)
+            shifted_char = alphabet[shifted_char_index ]
+            encoded_string += shifted_char
+        else:
+            encoded_string += char
+            pass
+   
     return encoded_string
 
-print(caesar_encode("mein text!", shift=15)) # -> btxc itmi!
 
+def decoding(encoded_text: str, alphabet="abcdefghijklmnopqrstuvwxyz") -> str:
+    """
+    iterate through length of alphabet for possible letter shifts to decode the message
+    check if words are in duden, return string where words match!
+    
+    compares if words exsits, onlhy prints if they do
+    """
+    def real_word_check(word: str) -> bool:
+        """
+        Compares all "words" in decrypted string with german dictionary entries
+        """
+        try:
+            
+            if word in mein_duden:
+                return True
+            else:
+                return False
+        except Exception as e:
+            print(f"Fehler beim Überprüfen des Worts '{word}': {e}")
+            return False
+    
+    for i in range(len(alphabet)):
+        decoded_text = caesar_encode(encoded_text, i, alphabet)
+        decoded_words = decoded_text.split()
+        for word in decoded_words:
+            if real_word_check(word):
+                return decoded_text
+            else:
+                pass
 
+# A1 bis A3
+if __name__ == "__main__":
+    print(caesar_encode("mein text!", shift=15)) # -> btxc itmi!
 
+    print(decoding("xri eztyk jtycvtyk wlvi uve rewrex.")) # -> gar nicht schlecht fuer den anfang.
 
-
-# alternativ für das dict
-# my_dict = {index: letter for index, letter in enumerate(alphabet)}
+    new_alphabet = "abcdefghijklmnopqrstuvwxyz .,!?äöü"
+    print(decoding("k j?xebmj.btxww,nbvjwbxqwnby xp jvvbtj!vbn j,nwc", new_alphabet)) # -> bravo! das konnte man ohne programm kaum eraten.
