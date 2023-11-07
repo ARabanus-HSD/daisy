@@ -8,7 +8,8 @@ mein_duden = ["apfel", "buch", "tisch", "haus", "stuhl", "auto", "fenster", "hun
               "fernseher", "lampe", "telefon", "taschenlampe", "regenschirm", "tasse", "teppich", "sessel", "kissen", 
               "bett", "decke", "buchstabe", "zahl", "schlüssel", "schloss"]
 
-    
+# git push test
+
 # C1
 def caesar_encode(text: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> str:
     """
