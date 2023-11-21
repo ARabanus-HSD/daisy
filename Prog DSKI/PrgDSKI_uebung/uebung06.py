@@ -16,7 +16,7 @@ class Circle(Point):
         self.radius = radius
 
     def __eq__(self, c):
-        return (self.radius == c.radius)
+        return self.radius == c.radius
 
 
 # prep for A2
