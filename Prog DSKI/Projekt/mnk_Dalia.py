@@ -56,6 +56,5 @@ class MyBot(Player):
         pass
     
     
-    
-    aqws4ed5rf6tg7zh8uj9ik0oß0kij9uh8z7gt6frd5es4w3aqws4ed5rf6tg7zh8uj90k
+
     
