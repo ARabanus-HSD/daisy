@@ -56,4 +56,3 @@ class MyBot(Player):
         pass
     
     
-        
