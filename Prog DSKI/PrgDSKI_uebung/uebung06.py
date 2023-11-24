@@ -77,5 +77,3 @@ p1.get_mail("FirstGuess") # => Password incorrect.
 p1.get_mail("SecondGuess") # => Password incorrect.
 p1.get_mail("ThirdGuess") # => Password incorrect.
 p1.get_mail("SuperSecret") # => Too many failed attempts.
-
-# commenting test
