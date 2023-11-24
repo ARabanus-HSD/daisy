@@ -1,9 +1,13 @@
 # imports
+import numpy as np
 
 class Game:
     
     def __init__(self, m, n, k, board, player1, player2):
-        """_summary_
+        """_summary_:
+        Board is filled with zeros
+        player1 places 1
+        player2 places 2
 
         Args:
             m (_type_): _description_
@@ -22,6 +26,20 @@ class Game:
 
     def start():
         """_summary_
+        """
+        pass
+    
+    def has_won():
+        """_summary_
+        playerX has won when there is a k-long Pattern on the m x n board
+        start checking for winning pattern after k moves
+        
+        checking process:
+        - pick a placed move of the player that just went
+        - check if surrounding 8 array cells have the same label
+        - if not, next player
+        - if there is an entry in a neighbor cell, follow the direction k times. if the
+              
         """
         pass
     
@@ -44,15 +62,14 @@ class Board:
         self.m = m
         self.n = n
         self.k = k
+        self.board = np.zeros(self.m, self.n)
         pass
     
-    def has_won():
-        """_summary_
-        """
-        pass
+    
     
     def display():
         """_summary_
+        
         """
         pass
     
@@ -102,5 +119,3 @@ class MyBot(Player):
             board (_type_): _description_
         """
         pass
-    
-    
