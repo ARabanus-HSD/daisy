@@ -60,6 +60,17 @@ class Player:
     
     def __init__(self, name, player_number):
         """_summary_
+        """
+        self.name = name
+        self.player_number = player_number 
+        
+    def make_move(self, board):
+        """_summary_
+        """
+        
+    
+    def __init__(self, name, player_number):
+        """_summary_
 
         Args:
             name (_type_): _description_
@@ -75,7 +86,7 @@ class Player:
             board (_type_): _description_
         """
         pass
-      
+        pass
     
 class MyBot(Player):
     
