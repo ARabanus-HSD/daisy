@@ -51,7 +51,7 @@ class Game:
 
 class Board:
     
-    def __init__(self, m, n, k):
+    def __init__(self, m:int, n:int, k:int):
         """_summary_
 
         Args:
@@ -62,16 +62,24 @@ class Board:
         self.m = m
         self.n = n
         self.k = k
-        self.board = np.zeros(self.m, self.n)
-        pass
-    
-    
-    
-    def display():
-        """_summary_
         
+        if m < k:
+            raise ValueError("k can't be larger than n or m")
+        elif n < k:
+            raise ValueError("k can't be larger than n or m")
+        else:
+            return    
+    
+    def display(self):
         """
-        pass
+        creates gameboard with n x m, datatype int
+        
+        Returns:
+            board: as numpy array size n x m
+        """
+        self.board = np.zeros((self.m, self.n), dtype=int)
+        return self.board
+    
     
 class Player:
     
@@ -113,9 +121,12 @@ class MyBot(Player):
         pass
         
     def make_move(self, board): #überarbeiten im vergleich zu player
-        """_summary_
+        """_summary_k > n or self.k < self.
 
         Args:
             board (_type_): _description_
         """
         pass
+    
+    
+print(Board(5, 5, 4).display())
