@@ -32,6 +32,7 @@ def keep_cross(input_array, n_row, n_col):
         mask[i, :] = 1
         
     output_array = input_array * mask
+    
     return output_array
         
         
