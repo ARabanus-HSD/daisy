@@ -81,7 +81,7 @@ class Board:
         return self.board
     
     
-class Player:
+class Player: #ich bin noch nicht fertig!! ich habe nur laut nachgedacht
     
     def __init__(self, name, player_number):
         """_summary_
@@ -91,8 +91,16 @@ class Player:
         
     def make_move(self, board):
         """_summary_
-        """
         
+        """
+        #der player muss irgndwie einen input geben, aber macht der das hier in der def?
+        #geht das überhaupt, wenn es kein attribute für row und column gibt?
+        
+        #self.board[row][column] = player_number
+        #return self.board
+        
+        #und wie soll der input abgefragt werden -> soll das in die console eingegeben werden?
+        #eigentlich wäre es cooler, wenn man irgendwo hinklickt aber egal I will find a way
     
     def __init__(self, name, player_number):
         """_summary_
@@ -110,7 +118,6 @@ class Player:
         Args:
             board (_type_): _description_
         """
-        pass
         pass
     
 class MyBot(Player):
