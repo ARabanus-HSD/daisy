@@ -47,5 +47,3 @@ my_array = np.array([[1, 2, 3, 4],
                      [13, 14, 15, 16]])
 
 print(keep_cross(my_array, 2, 2))
-
-# does git work for UNI?????
