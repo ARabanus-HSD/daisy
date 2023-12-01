@@ -23,3 +23,8 @@ class Board():
 
     def has_won(self): # -> 0, 1 oder 2
         pass
+
+
+if __name__ == "__main__":
+    # hier kommt zeug zum testen hin
+    pass

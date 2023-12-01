@@ -38,4 +38,8 @@ class Bot_comples(Player):
 
     def make_move(self, board): # -> (row, col)
         pass
-    
+
+
+if __name__ == "__main__":
+    # hier kommt zeug zum testen hin
+    pass
