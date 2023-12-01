@@ -3,7 +3,7 @@ import numpy as np
 
 class Board:
     
-    def __init__(self, m:int=6, n:int=7, k:int=4):
+    def __init__(self, m=6, n=7, k=4):
         """_summary_
 
         Args:
@@ -20,12 +20,23 @@ class Board:
         elif n < k:
             raise ValueError("k can't be larger than n or m")
         else:
-            self.board = np.zeros((self.m, self.n), dtype=int)
+            self.array = np.zeros((self.m, self.n), dtype=int)
             return
+    
+    def has_won():
+        """_summary_
+        playerX has won when there is a k-long Pattern on the m x n board
+        start checking for winning pattern after k moves
         
-    def update_board():
+        checking process:
+        - pick a placed move of the player that just went
+        - check if surrounding 8 array cells have the same label
+        - if not, next player
+        - if there is an entry in a neighbor cell, follow the direction k times. if the
+              
+        """
+        pass
 
-        return
     
     def display(self):
         """
@@ -93,9 +104,9 @@ class MyBot(Player):
         """
         pass
 
-class Game(Board):
+class Game():
     
-    def __init__(self):
+    def __init__(self, m, n, k, player1, player2):
         """_summary_:
         
         player1 places 1
@@ -109,12 +120,12 @@ class Game(Board):
             player1 (_type_): _description_
             player2 (_type_): _description_
         """
-        # self.m = m
-        # self.n = n
-        # self.k = k
-        # self.player1 = player1
-        # self.player2 = player2
-
+        self.m = m
+        self.n = n
+        self.k = k
+        self.player1 = player1
+        self.player2 = player2
+        
     def start(self):
         # choose player 1 and player 2
         
@@ -125,24 +136,15 @@ class Game(Board):
         
         pass
     
-    def has_won():
-        """_summary_
-        playerX has won when there is a k-long Pattern on the m x n board
-        start checking for winning pattern after k moves
-        
-        checking process:
-        - pick a placed move of the player that just went
-        - check if surrounding 8 array cells have the same label
-        - if not, next player
-        - if there is an entry in a neighbor cell, follow the direction k times. if the
-              
-        """
-        pass
+    
     
     def game_loop(self): #eigentliches gameplay
         """_summary_
         """
-        Board().display()
+        
+        # update board
+
+        Board().display() 
 
         # show current game board status
         # tell players (1 or 2) which turn
@@ -158,6 +160,7 @@ if __name__ == "__main__":
         # has won
         
         
-        Game().start()
-        Game().game_loop()
-        Game().has_won()
+        game1 = Game(6, 7, 4, "asd", "asf")
+        game1.start()
+        game1.game_loop()
+        game1.has_won()
