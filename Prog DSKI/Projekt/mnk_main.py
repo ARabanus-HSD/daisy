@@ -24,7 +24,7 @@ class Board:
             return
         
     def update_board():
-        
+
         return
     
     def display(self):
@@ -151,5 +151,13 @@ class Game(Board):
 
 
 if __name__ == "__main__":
-    Game().start()
-    Game().game_loop()
+    while True:
+        # start game
+        # game loop (1 turn)
+        # check if won
+        # has won
+        
+        
+        Game().start()
+        Game().game_loop()
+        Game().has_won()
