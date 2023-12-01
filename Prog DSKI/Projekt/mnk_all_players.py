@@ -4,7 +4,7 @@ import random as rdm
 
 class Player():
 
-    def __init__(self, name, player_number) -> None: # player number 1 or 2 
+    def __init__(self, player_number, name) -> None: # player number 1 or 2 
         self.name = name
         self.player_number = player_number
         pass
@@ -15,8 +15,8 @@ class Player():
 
 class Bot_radom(Player):
 
-    def __init__(self, name, player_number) -> None:
-        super().__init__(name, player_number)
+    def __init__(self, player_number, name="random bot") -> None:
+        super().__init__(player_number, name)
 
     def make_move(self, board): # -> (row, col)
         pass
@@ -24,8 +24,8 @@ class Bot_radom(Player):
 
 class Bot_not_random(Player):
 
-    def __init__(self, name, player_number) -> None:
-        super().__init__(name, player_number)
+    def __init__(self, player_number, name="non random bot") -> None:
+        super().__init__(player_number, name)
 
     def make_move(self, board): # -> (row, col)
         pass
@@ -33,8 +33,8 @@ class Bot_not_random(Player):
 
 class Bot_comples(Player):
 
-    def __init__(self, name, player_number) -> None:
-        super().__init__(name, player_number)
+    def __init__(self, player_number, name="complex bot") -> None:
+        super().__init__(player_number, name)
 
     def make_move(self, board): # -> (row, col)
         pass
