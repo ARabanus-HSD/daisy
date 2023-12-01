@@ -1,10 +1,9 @@
 # imports
 import numpy as np
-import random
 
 class Board:
     
-    def __init__(self, m:int, n:int, k:int):
+    def __init__(self, m:int=6, n:int=7, k:int=4):
         """_summary_
 
         Args:
@@ -21,7 +20,12 @@ class Board:
         elif n < k:
             raise ValueError("k can't be larger than n or m")
         else:
-            return    
+            self.board = np.zeros((self.m, self.n), dtype=int)
+            return
+        
+    def update_board():
+        
+        return
     
     def display(self):
         """
@@ -30,7 +34,7 @@ class Board:
         Returns:
             board: as numpy array size n x m
         """
-        self.board = np.zeros((self.m, self.n), dtype=int)
+        # falsch/ nicht richtig
         print(self.board)
         pass
 
@@ -91,7 +95,7 @@ class MyBot(Player):
 
 class Game(Board):
     
-    def __init__(self, m:int, n:int, k:int, player1:str, player2:str):
+    def __init__(self):
         """_summary_:
         
         player1 places 1
@@ -105,15 +109,20 @@ class Game(Board):
             player1 (_type_): _description_
             player2 (_type_): _description_
         """
-        self.m = m
-        self.n = n
-        self.k = k
-        self.player1 = player1
-        self.player2 = player2
+        # self.m = m
+        # self.n = n
+        # self.k = k
+        # self.player1 = player1
+        # self.player2 = player2
 
     def start(self):
-         
-        Board(self.m, self.n, self.k).display()
+        # choose player 1 and player 2
+        
+        # > either player or bot
+
+        # choose board size m x n (default: 6 x 7)
+        # choose length of k (default: 4)
+        
         pass
     
     def has_won():
@@ -130,12 +139,17 @@ class Game(Board):
         """
         pass
     
-    def game_loop(): #eigentliches gameplay
+    def game_loop(self): #eigentliches gameplay
         """_summary_
         """
+        Board().display()
+
+        # show current game board status
+        # tell players (1 or 2) which turn
+        # next players (2 or 1) turn 
         pass
 
 
 if __name__ == "__main__":
-
-    Game(3, 5, 1, "p1", "p2").start()
+    Game().start()
+    Game().game_loop()
