@@ -1,6 +1,6 @@
 import numpy as np
 import mnk_all_players as players
-import mnk_board as brd
+import mnk_board as board
 import random
 
 class Game():
@@ -47,7 +47,7 @@ class Game():
         self.n = int(input("gameboard width: "))
         self.k = int(input("winning lenght: "))
         print(20*"-")
-        self.board = brd.Board(self.m, self.n, self.k)
+        self.board = board.Board(self.m, self.n, self.k)
 
         # > choose player 1 -> player, bot_random, bot_not_random, bot_complex
         print("\nplayer 1:")
@@ -70,10 +70,10 @@ class Game():
         return True  
 
     def game_loop(self):
-        current_player = random.choice(players())
+        current_player = random.choice([self.player1, self.player2])
 
-        while not self.full_board() and not self.has_won(current_player):
-            self.display() #oder irgendwas mit update oder so? 
+        while not self.full_board() and not self.board.has_won(current_player):
+            self.board.display() #oder irgendwas mit update oder so? 
             print(f"Player {current_player}'s turn")
 
             x, y = self.make_move(current_player)
@@ -82,10 +82,10 @@ class Game():
             else:
                 current_player = self.player1
 
-        self.display()
-        if self.has_won(self.player1):
+        self.board.display()
+        if self.board.has_won(self.player1):
             print("Player 1 wins!")
-        elif self.has_won(self.player2):
+        elif self.board.has_won(self.player2):
             print("Player 2 wins!")
         else:
             print("It's a draw!")
