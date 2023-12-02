@@ -1,7 +1,7 @@
 # Complete project details at https://RandomNerdTutorials.com/micropython-hc-sr04-ultrasonic-esp32-esp8266/
 from hcsr04 import HCSR04
 from time import sleep
-import stepper
+# import stepper
 from machine import Pin
 
 # Ultraschall senor
@@ -21,8 +21,8 @@ while True:
     distance = sensor.distance_cm()
     print('Distance:', distance, 'cm')
     
-    s1.step(1)
+    # s1.step(1)
     # s1.step(100,-1)
-    s1.angle(1)
+    # s1.angle(1)
     # s1.angle(360,-1)
     time.sleep(0.5)

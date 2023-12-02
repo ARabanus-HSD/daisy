@@ -1,6 +1,7 @@
 import numpy as np
 import mnk_all_players as players
 import mnk_board as brd
+import random
 
 class Game():
     
@@ -61,14 +62,33 @@ class Game():
         self.player2 = Game.choose_player(2, p2_name, p2_choice)   
         pass
     
+    def full_board(self):
+        for row in self.board:
+            for value in row:
+                if value == 0:
+                    return False
+        return True  
+
     def game_loop(self):
-        self.board.display()
-        # player 1 makes a move
-        # game checks has_won
-        # if yes game ends
-        # if no, next player
-        # restart game loop
-        pass
+        current_player = random.choice(players())
+
+        while not self.full_board() and not self.has_won(current_player):
+            self.display() #oder irgendwas mit update oder so? 
+            print(f"Player {current_player}'s turn")
+
+            x, y = self.make_move(current_player)
+            if current_player == self.player1:
+                current_player = self.player2
+            else:
+                current_player = self.player1
+
+        self.display()
+        if self.has_won(self.player1):
+            print("Player 1 wins!")
+        elif self.has_won(self.player2):
+            print("Player 2 wins!")
+        else:
+            print("It's a draw!")
 
 if __name__ == "__main__":
     # game_m = int(input())
