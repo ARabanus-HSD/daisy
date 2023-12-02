@@ -13,26 +13,31 @@ class Game():
 
       pass
 
-    def choose_player(p_number, p_name, choice):   
+    def choose_player(p_number, p_name, choice):
+        """"""
         if choice == 1:
             player = players.Player(p_number, p_name)
             print("player is human")
             print(20*"-")
+            return player
         elif choice == 2:
             player = players.Bot_radom(p_number, p_name)
             print("player is a random bot")
             print(20*"-")
+            return player
         elif choice == 3:
             player = players.Bot_not_random(p_number, p_name)
             print("player is not a random bot")
             print(20*"-")
+            return player
         elif choice == 4:
             player = players.Bot_comples(p_number, p_name)
             print("player is a complex bot")
             print(20*"-")
+            return player
         else:
             raise ValueError("input number out of range, please retry!")
-        pass
+    
     
     def start(self):
         # "Menü abfrage"
@@ -54,9 +59,7 @@ class Game():
         p2_name = str(input("input name: "))
         p2_choice = int(input("1 for human player | 2, 3, 4 for increasing bot difficulty: "))
 
-        self.player2 = Game.choose_player(2, p2_name, p2_choice)
-        
-        
+        self.player2 = Game.choose_player(2, p2_name, p2_choice)   
         pass
     
     def game_loop(self):
