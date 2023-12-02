@@ -1,7 +1,73 @@
 # imports
 import numpy as np
 
-class Game:
+class Board:
+    
+    def __init__(self, m:int, n:int, k:int):
+        """_summary_
+
+        Args:
+            m (_type_): _description_
+            n (_type_): _description_
+            k (_type_): _description_
+        """
+        self.m = m
+        self.n = n
+        self.k = k
+        
+        if m < k:
+            raise ValueError("k can't be larger than n or m")
+        elif n < k:
+            raise ValueError("k can't be larger than n or m")
+        else:
+            return    
+    
+    def display(self):
+        """
+        creates gameboard with n x m, datatype int
+        
+        Returns:
+            board: as numpy array size n x m
+        """
+        self.board = np.zeros((self.m, self.n), dtype=int)
+        return self.board
+
+    
+class Player: #ich bin noch nicht fertig!! ich habe nur laut nachgedacht
+    
+    def __init__(self, name, player_number):
+        """_summary_
+        """
+        self.name = name
+        self.player_number = player_number 
+        
+    def make_move(self, board):
+        """_summary_
+        
+        """
+        player_move = [int(input("Please make a move: ")), int(input(""))]
+        return player_move
+    
+    
+class MyBot(Player):
+    
+    def __init__(self):
+        """_summary_
+        """
+        pass
+        
+    def make_move(self, board): #überarbeiten im vergleich zu player
+        """_summary_k > n or self.k < self.
+
+        Args:
+            board (_type_): _description_
+        """
+        pass
+    
+    
+print(Board(5, 5, 4).display())
+
+class Game(Board):
     
     def __init__(self, m, n, k, board, player1, player2):
         """_summary_:
@@ -47,93 +113,4 @@ class Game:
         """_summary_
         """
         pass
-
-
-class Board:
     
-    def __init__(self, m:int, n:int, k:int):
-        """_summary_
-
-        Args:
-            m (_type_): _description_
-            n (_type_): _description_
-            k (_type_): _description_
-        """
-        self.m = m
-        self.n = n
-        self.k = k
-        
-        if m < k:
-            raise ValueError("k can't be larger than n or m")
-        elif n < k:
-            raise ValueError("k can't be larger than n or m")
-        else:
-            return    
-    
-    def display(self):
-        """
-        creates gameboard with n x m, datatype int
-        
-        Returns:
-            board: as numpy array size n x m
-        """
-        self.board = np.zeros((self.m, self.n), dtype=int)
-        return self.board
-    
-    
-class Player: #ich bin noch nicht fertig!! ich habe nur laut nachgedacht
-    
-    def __init__(self, name, player_number):
-        """_summary_
-        """
-        self.name = name
-        self.player_number = player_number 
-        
-    def make_move(self, board):
-        """_summary_
-        
-        """
-        #der player muss irgndwie einen input geben, aber macht der das hier in der def?
-        #geht das überhaupt, wenn es kein attribute für row und column gibt?
-        
-        #self.board[row][column] = player_number
-        #return self.board
-        
-        #und wie soll der input abgefragt werden -> soll das in die console eingegeben werden?
-        #eigentlich wäre es cooler, wenn man irgendwo hinklickt aber egal I will find a way
-    
-    def __init__(self, name, player_number):
-        """_summary_
-
-        Args:
-            name (_type_): _description_
-            player_number (_type_): _description_
-        """
-        self.name = name
-        self.player_number = player_number
-        
-    def make_move(self, board):
-        """_summary_
-
-        Args:
-            board (_type_): _description_
-        """
-        pass
-    
-class MyBot(Player):
-    
-    def __init__(self):
-        """_summary_
-        """
-        pass
-        
-    def make_move(self, board): #überarbeiten im vergleich zu player
-        """_summary_k > n or self.k < self.
-
-        Args:
-            board (_type_): _description_
-        """
-        pass
-    
-    
-print(Board(5, 5, 4).display())
