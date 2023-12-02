@@ -14,7 +14,6 @@ class Game():
       pass
 
     def choose_player(p_number, p_name, choice):
-        """"""
         if choice == 1:
             player = players.Player(p_number, p_name)
             print("player is human")
@@ -64,8 +63,11 @@ class Game():
     
     def game_loop(self):
         self.board.display()
-        
-
+        # player 1 makes a move
+        # game checks has_won
+        # if yes game ends
+        # if no, next player
+        # restart game loop
         pass
 
 if __name__ == "__main__":

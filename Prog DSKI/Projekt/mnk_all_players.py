@@ -10,7 +10,10 @@ class Player():
         pass
 
     def make_move(self): # -> (row, col)
-        pass
+
+        #### REMOVE THIS! ####
+        move = (1, 1)# (x, y) tuple where move is placed
+        return move
 
 
 class Bot_radom(Player):
@@ -19,7 +22,10 @@ class Bot_radom(Player):
         super().__init__(player_number, name)
 
     def make_move(self, board): # -> (row, col)
-        pass
+        
+        #### REMOVE THIS! ####
+        move = (1, 1)# (x, y) tuple where move is placed
+        return move
 
 
 class Bot_not_random(Player):
@@ -28,7 +34,10 @@ class Bot_not_random(Player):
         super().__init__(player_number, name)
 
     def make_move(self, board): # -> (row, col)
-        pass
+
+        #### REMOVE THIS! ####
+        move = (1, 1)# (x, y) tuple where move is placed
+        return move
 
 
 class Bot_comples(Player):
@@ -37,7 +46,10 @@ class Bot_comples(Player):
         super().__init__(player_number, name)
 
     def make_move(self, board): # -> (row, col)
-        pass
+        
+        #### REMOVE THIS! ####
+        move = (1, 1)# (x, y) tuple where move is placed
+        return move
 
 
 if __name__ == "__main__":
