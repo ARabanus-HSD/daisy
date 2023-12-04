@@ -1,0 +1,59 @@
+import numpy as np
+
+# A1.2
+def get_numpy_array_infos(array):
+    array_dtype = array.dtype
+    array_size = array.size
+    array_shape = array.shape
+    array_min = np.min(array)
+    array_max = np.max((array))
+    return array_dtype, array_size, array_shape, array_min, array_max
+
+
+array_as_list = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+my_first_numpy_array = np.array(array_as_list)
+
+# A1.3
+def min_max_scaling(array):
+    """
+    normieren heisst: spanne zwischen min und max des input arrays
+    werden zwischen 0 und 1 gesetzt
+    """
+    array_min = np.min(array)
+    array_max = np.max((array))
+    array_norm = (array - array_min)/(array_max - array_min)
+    return array_norm
+
+# A1.4
+def aufgabe1_4(array):
+    mean_all = np.mean(array)
+    return mean_all
+
+
+
+# A1.1 a)
+a = np.ones(shape=(2, 3), dtype=int)
+b = np.eye(3)
+c = np.full(shape=(3, 3), fill_value=5)
+print(a, "\n", b, "\n", c)
+
+# A1.1 b)
+array_8x8 = np.arange(1, 129, 2, dtype=int).reshape((8, 8))
+print(array_8x8)
+
+# A1.2
+print(get_numpy_array_infos(array_8x8))
+
+# A1.3
+print(min_max_scaling(array_8x8))
+
+# A1.4
+print(aufgabe1_4(my_first_numpy_array))
+
+# A1.4 mean of cols
+for column in my_first_numpy_array:
+    print(f"{column} mean: ", aufgabe1_4(my_first_numpy_array))
+
+# A1.4 mean of rows
+for rows in my_first_numpy_array.T:
+    print(f"{rows} mean: ", aufgabe1_4(my_first_numpy_array))
