@@ -4,13 +4,13 @@ import random
 
 class Player():
 
-    def __init__(self, player_number, name) -> None: # player number 1 or 2 
+    def __init__(self, player_number, name, board) -> None: # player number 1 or 2
         self.name = name
         self.player_number = player_number
+        self.board = board
         pass
 
     def make_move(self, player): # -> (row, col)
-        #### REMOVE THIS! ####
         player_move = (int(input("Please make a move: ")), int(input("")))
         return player_move
 
@@ -23,7 +23,7 @@ class Player():
         return valid_row and valid_col and empty_cell
 
 
-class Bot_radom(Player):
+class Bot_random(Player):
 
     def __init__(self, player_number, name="random bot") -> None:
         super().__init__(player_number, name)
@@ -45,17 +45,20 @@ class Bot_radom(Player):
 
 class Bot_simple(Player):
 
-    def __init__(self, player_number, name="non random bot") -> None:
-        super().__init__(player_number, name)
+    def __init__(self, player_number, name, board) -> None:
+        super().__init__(player_number, name, board)
 
     def make_move(self): # -> (row, col)
+        self.board.shape
+        # "look" at board
+        # start at center of board
+        # search for row/col/diagonal with at least k free slots
+        # place on move on first slot that fulfills criteria
 
-        #### REMOVE THIS! ####
-        move = (1, 1)# (x, y) tuple where move is placed
         return move
 
 
-class Bot_comples(Player):
+class Bot_complex(Player):
 
     def __init__(self, player_number, name="complex bot") -> None:
         super().__init__(player_number, name)
