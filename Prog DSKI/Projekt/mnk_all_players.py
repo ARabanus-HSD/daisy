@@ -43,7 +43,7 @@ class Bot_radom(Player):
             return move
 
 
-class Bot_not_random(Player):
+class Bot_simple(Player):
 
     def __init__(self, player_number, name="non random bot") -> None:
         super().__init__(player_number, name)
