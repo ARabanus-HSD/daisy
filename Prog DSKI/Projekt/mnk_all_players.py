@@ -22,8 +22,8 @@ class Player():
         gibt true or false wieder
         made by Dalia
         '''
-        valid_row = 0 <= moves[0] < self.m
-        valid_col = 0 <= moves[1] < self.n
+        valid_row = 0 <= moves[0] < self.board.shape[0]
+        valid_col = 0 <= moves[1] < self.board.shape[1]
         empty_cell = board[moves[0]][moves[1]] == 0
         if valid_row and valid_col and empty_cell:
             return True
@@ -56,14 +56,19 @@ class Bot_simple(Player):
         pass
 
     def make_move(self): # -> (row, col)
-        self.board.shape
+        if not np.any(self.board):
+            move = (random.randint(self.board.shape[0]),
+                    random.randint(self.board.shape[1]))
+    
+        else:
+            move = (1, 1)
         # "look" at board
         # start at center of board
         # search for row/col/diagonal with at least k free slots
         # place on move on first slot that fulfills criteria
 
         # return move
-        pass
+        return move
 
 
 class Bot_complex(Player):

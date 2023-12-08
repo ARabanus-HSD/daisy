@@ -12,11 +12,11 @@ def keep_cross(input_array, n_row, n_col):
         n_col (_type_): starts with 0!
     """
     
-    mask = np.zeros((input_array.shape[0], input_array.shape[1]), dtype=float)
+    mask = np.ones((input_array.shape[0], input_array.shape[1]), dtype=float)
     row_and_col = [n_row, n_col]
     for i in row_and_col:
-        mask[:, i] = 1
-        mask[i, :] = 1
+        mask[:, i] = 0
+        mask[i, :] = 0
         
     output_array = input_array * mask
     
@@ -36,19 +36,17 @@ def search_diagonal(array, k):
     # go
     pass
 
+def make_move(arr):
+    print(arr)
+    if not np.any(arr):
+        move = (random.randint(board.shape))
+    else:
+        print("something else")
+    pass
 
-arr = np.ones((6, 7), dtype=int)
+arr = np.zeros((6, 7), dtype=int)
 
 pattern_arr = keep_cross(arr, 3, 4)
 
-def search_horizontal():
-
-    pass
-
-def search_vertical():
-    
-    pass
-
-def search_diagonal():
-    
-    pass
+make_move(arr)
+make_move(pattern_arr)

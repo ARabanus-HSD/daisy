@@ -91,7 +91,7 @@ class Game():
                 # -> use its specific make_move
             # ALTERNATIVE? class make_move() an Player vererben (?)
         
-            players.make_move(current_player, board)
+            players.make_move(current_player)
             if current_player == self.player1:
                 current_player = self.player2
             else:
