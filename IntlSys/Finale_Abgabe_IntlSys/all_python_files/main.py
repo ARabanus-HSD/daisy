@@ -1,10 +1,8 @@
-# Complete project details at https://RandomNerdTutorials.com/micropython-hc-sr04-ultrasonic-esp32-esp8266/
 from hcsr04 import HCSR04
 import time
 import stepper
 from machine import Pin
 from log import logToFile
-
 
 # Ultraschall senor
 sensor = HCSR04(trigger_pin=5, echo_pin=18, echo_timeout_us=10000)
@@ -13,23 +11,30 @@ sensor = HCSR04(trigger_pin=5, echo_pin=18, echo_timeout_us=10000)
 # used pins: 26 -> IN4, 25 -> IN3, 33 -> IN2, 32 -> IN1
 s1 = stepper.create(Pin(26,Pin.OUT),Pin(25,Pin.OUT),Pin(33,Pin.OUT),Pin(32,Pin.OUT), delay=2)
 
+angle_size = 5 # degree per step
+object = "apple_charger" # which object (dont use space please!)
+hcsr04_distance = "" # slot in which distance sensor is located
+total_num_rot = 3
+measurement_number = 1
+additional_param = "_" + "pulldown"
 
-# ESP8266
-#sensor = HCSR04(trigger_pin=12, echo_pin=14, echo_timeout_us=10000)
-
-
-steps = 72
-# step_size = 2
-angle_size = 5
+steps = total_num_rot * 360 / angle_size
 
 print("Object: apple charger (ipad)")
 print(f"angle_size={angle_size}")
 print("distance, unit (cm)")
 
+# object, angle_size, total_num_rot, hcsr04_distance
+header = f"{object}, {angle_size}, {hcsr04_distance}, {total_num_rot}, {measurement_number},"
+
+file = open(f"logfile_{object}_{angle_size}_{hcsr04_distance}_{total_num_rot}_{measurement_number}.txt", "w")
+file.write(header)
+file.close()
+
 for i in range(steps):
-    distance = sensor.distance_cm()
+    distance = f"{object}, {angle_size}, {hcsr04_distance}, {total_num_rot}, {measurement_number} {str(sensor.distance_cm())},"
     
-    print(i, 'd,', distance, ',\n')
+    print(i, 'd,', distance)
     
     file = open("logfile.txt", "w")
     file.write(distance)
@@ -40,8 +45,3 @@ for i in range(steps):
     s1.angle(angle_size)
     # s1.angle(360,-1)
     time.sleep(1)
-    # Begin loging to file
-    os.dupterm(logToFile())
-    
-    # Stop loging to file
-    os.dupterm(None)
