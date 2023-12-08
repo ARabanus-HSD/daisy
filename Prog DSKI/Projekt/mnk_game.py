@@ -63,11 +63,18 @@ class Game():
         pass
     
     def full_board(self):
-        for row in self.board:
-            for value in row:
-                if value == 0:
-                    return False
-        return True  
+        # go through rows, check if values are 0 or not
+        # if any are 0 return false
+        # if not return True
+        print(self.board)
+        # for row in enumerate(self.board):
+            # for value in range(len(row)):
+
+        # # for row in self.board:
+            # # for value in row:
+                # if value == 0:
+                    # return False
+        # return True  
 
     def game_loop(self):
         current_player = random.choice([self.player1, self.player2])

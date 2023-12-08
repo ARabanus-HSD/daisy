@@ -7,21 +7,20 @@ class Board():
         self.m = m
         self.n = n
         self.k = k
-        
         # check if zielgerade is larger than gameboard
         if self.m < self.k:
             raise ValueError("k can't be larger than n or m")
         elif self.n < self.k:
             raise ValueError("k can't be larger than n or m")
         else:
-            self.array = np.zeros(shape=(self.m, self.n), dtype=int)
+            self.board = np.zeros(shape=(self.m, self.n), dtype=int)
             return
 
     def display(self):
-        print(self.array)
+        print(self.board)
         pass
 
-    def has_won(self):
+    def has_won(self, current_player):
         """_summary_
         playerX has won when there is a k-long Pattern on the m x n board
         start checking for winning pattern after k moves
@@ -33,6 +32,8 @@ class Board():
         - if there is an entry in a neighbor cell, follow the direction k times. if the
               
         """
+        self.current_player = current_player
+
         for x in self.board:
             count = 0
             for value in x:
