@@ -83,7 +83,7 @@ class Game():
             self.board.display() #oder irgendwas mit update oder so? 
             print(f"Player {current_player}'s turn")
 
-            x, y = self.make_move(current_player)
+            x, y = players.make_move(current_player)
             if current_player == self.player1:
                 current_player = self.player2
             else:

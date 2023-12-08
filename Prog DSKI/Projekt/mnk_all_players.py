@@ -9,13 +9,13 @@ class Player():
         self.player_number = player_number
         pass
 
-    def make_move(self): # -> (row, col)
-
+    def make_move(self, player): # -> (row, col)
         #### REMOVE THIS! ####
-        move = (1, 1)# (x, y) tuple where move is placed
-        return move
+        player_move = (int(input("Please make a move: ")), int(input("")))
+        return player_move
+
     
-    def is_valid(self, m, n):
+    def is_valid(self, m, n, board):
         valid_row = 0 <= m < self.m
         valid_col = 0 <= n < self.n
         empty_cell = self.board[m][n] == 0
@@ -28,17 +28,19 @@ class Bot_radom(Player):
     def __init__(self, player_number, name="random bot") -> None:
         super().__init__(player_number, name)
 
-    def make_move(self, board): # -> (row, col)
+    def make_move(self): # -> (row, col)
         """_summary_k > n or self.k < self.n
         Args:
             board (_type_): _description_
         """
+        move = (1, 1)
         while True:
             x = random.randint(0, self.m - 1)
             y = random.randint(0, self.n - 1)
             if self.is_valid(x, y):
                 self.board[x][y] = Player() #da bin ich mir noch nicht sicher
-            return x, y
+            move = (x, y)
+            return move
 
 
 class Bot_not_random(Player):
@@ -46,7 +48,7 @@ class Bot_not_random(Player):
     def __init__(self, player_number, name="non random bot") -> None:
         super().__init__(player_number, name)
 
-    def make_move(self, board): # -> (row, col)
+    def make_move(self): # -> (row, col)
 
         #### REMOVE THIS! ####
         move = (1, 1)# (x, y) tuple where move is placed
@@ -58,7 +60,7 @@ class Bot_comples(Player):
     def __init__(self, player_number, name="complex bot") -> None:
         super().__init__(player_number, name)
 
-    def make_move(self, board): # -> (row, col)
+    def make_move(self): # -> (row, col)
         
         #### REMOVE THIS! ####
         move = (1, 1)# (x, y) tuple where move is placed
