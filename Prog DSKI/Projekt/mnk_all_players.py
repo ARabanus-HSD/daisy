@@ -15,12 +15,12 @@ class Player():
         player_move = (int(input("Please make a move: ")), int(input("")))
         return player_move
 
-    #Dalia
     def is_valid(self, moves:tuple, board):
         '''
         erhält ein tuple von moves
         prüft ob moves in valid raum ist
         gibt true or false wieder
+        made by Dalia
         '''
         valid_row = 0 <= moves[0] < self.m
         valid_col = 0 <= moves[1] < self.n
@@ -36,16 +36,14 @@ class Bot_random(Player):
         super().__init__(player_number, name)
         
     def make_move(self): # -> (row, col)
-        """_summary_k > n or self.k < self.n
+        """erzeugt random move und fragt ab ob random move valid ist 
         made by Dalia
-        Args:
-            board (_type_): _description_
         """
         moves = (1, 1)
         while True:
             moves[0] = random.randint(0, self.board.shape[0] - 1)
             moves[1] = random.randint(0, self.board.shape[1] - 1)
-            if self.is_valid(moves):
+            if self.is_valid(moves, board):
                 self.board[moves[0]][moves[1]] = Player() #da bin ich mir noch nicht sicher - I think it's false
             return moves
 
