@@ -21,7 +21,7 @@ class Game():
             print(20*"-")
             return player
         elif choice == 2:
-            player = players.Bot_radom(p_number, p_name)
+            player = players.Bot_random(p_number, p_name)
             print("player is a random bot")
             print(20*"-")
             return player
@@ -31,7 +31,7 @@ class Game():
             print(20*"-")
             return player
         elif choice == 4:
-            player = players.Bot_comples(p_number, p_name)
+            player = players.Bot_complex(p_number, p_name)
             print("player is a complex bot")
             print(20*"-")
             return player
@@ -66,6 +66,7 @@ class Game():
         # go through rows, check if values are 0 or not
         # if any are 0 return false
         # if not return True
+        #made by Dalia
         print(self.board)
         # for row in enumerate(self.board):
             # for value in range(len(row)):
@@ -77,13 +78,13 @@ class Game():
         # return True  
 
     def game_loop(self):
+        #made by Dalia
         current_player = random.choice([self.player1, self.player2])
-
         while not self.full_board() and not self.board.has_won(current_player):
             self.board.display() #oder irgendwas mit update oder so? 
             print(f"Player {current_player}'s turn")
 
-            x, y = players.make_move(current_player)
+            players.make_move(current_player)
             if current_player == self.player1:
                 current_player = self.player2
             else:

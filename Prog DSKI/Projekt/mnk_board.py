@@ -30,7 +30,7 @@ class Board():
         - check if surrounding 8 array cells have the same label
         - if not, next player
         - if there is an entry in a neighbor cell, follow the direction k times. if the
-              
+              made by Dalia
         """
         self.current_player = current_player
 
