@@ -46,7 +46,10 @@ def make_move(arr):
 
 arr = np.zeros((6, 7), dtype=int)
 
-pattern_arr = keep_cross(arr, 3, 4)
+print(arr)
 
-make_move(arr)
-make_move(pattern_arr)
+current_move = (3, 2)
+
+arr[current_move] = 1                
+
+print(arr)
