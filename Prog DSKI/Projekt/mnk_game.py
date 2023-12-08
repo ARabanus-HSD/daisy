@@ -26,7 +26,7 @@ class Game():
             print(20*"-")
             return player
         elif choice == 3:
-            player = players.Bot_not_random(p_number, p_name, board)
+            player = players.Bot_simple(p_number, p_name, board)
             print("player is not a random bot")
             print(20*"-")
             return player
@@ -83,7 +83,14 @@ class Game():
         while not self.full_board() and not self.board.has_won(current_player):
             self.board.display() #oder irgendwas mit update oder so? 
             print(f"Player {current_player}'s turn")
-
+            
+            # problem! game loop weiss nicht welche class der current_player ist
+            # synatx müsste sein: players.Player.make_move()
+            # oder                players.Bot_random.make_move()
+                # -> check which class player is
+                # -> use its specific make_move
+            # ALTERNATIVE? class make_move() an Player vererben (?)
+        
             players.make_move(current_player, board)
             if current_player == self.player1:
                 current_player = self.player2
