@@ -11,7 +11,7 @@ class Player():
         self.board = board
         pass
 
-    def make_move(self, player): # -> (row, col)
+    def make_move(self): # -> (row, col)
         player_move = (int(input("Please make a move: ")), int(input("")))
         return player_move
 
@@ -32,8 +32,9 @@ class Player():
 
 class Bot_random(Player):
 
-    def __init__(self, player_number, name="random bot") -> None:
-        super().__init__(player_number, name)
+    def __init__(self, player_number, name, board) -> None:
+        super().__init__(player_number, name, board)
+        pass
         
     def make_move(self): # -> (row, col)
         """erzeugt random move und fragt ab ob random move valid ist 
@@ -43,7 +44,7 @@ class Bot_random(Player):
         while True:
             moves[0] = random.randint(0, self.board.shape[0] - 1)
             moves[1] = random.randint(0, self.board.shape[1] - 1)
-            if self.is_valid(moves, board):
+            if self.is_valid(moves, self.board):
                 self.board[moves[0]][moves[1]] = Player() #da bin ich mir noch nicht sicher - I think it's false
             return moves
 
@@ -52,6 +53,7 @@ class Bot_simple(Player):
 
     def __init__(self, player_number, name, board) -> None:
         super().__init__(player_number, name, board)
+        pass
 
     def make_move(self): # -> (row, col)
         self.board.shape
@@ -60,13 +62,14 @@ class Bot_simple(Player):
         # search for row/col/diagonal with at least k free slots
         # place on move on first slot that fulfills criteria
 
-        return move
+        # return move
+        pass
 
 
 class Bot_complex(Player):
 
-    def __init__(self, player_number, name="complex bot") -> None:
-        super().__init__(player_number, name)
+    def __init__(self, player_number, name, board) -> None:
+        super().__init__(player_number, name, board)
 
     def make_move(self): # -> (row, col)
         

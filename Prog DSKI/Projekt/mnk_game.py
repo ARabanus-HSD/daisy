@@ -16,22 +16,22 @@ class Game():
 
     def choose_player(p_number, p_name, choice):
         if choice == 1:
-            player = players.Player(p_number, p_name)
+            player = players.Player(p_number, p_name, board)
             print("player is human")
             print(20*"-")
             return player
         elif choice == 2:
-            player = players.Bot_random(p_number, p_name)
+            player = players.Bot_random(p_number, p_name, board)
             print("player is a random bot")
             print(20*"-")
             return player
         elif choice == 3:
-            player = players.Bot_not_random(p_number, p_name)
+            player = players.Bot_not_random(p_number, p_name, board)
             print("player is not a random bot")
             print(20*"-")
             return player
         elif choice == 4:
-            player = players.Bot_complex(p_number, p_name)
+            player = players.Bot_complex(p_number, p_name, board)
             print("player is a complex bot")
             print(20*"-")
             return player
