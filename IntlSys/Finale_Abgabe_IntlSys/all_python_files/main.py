@@ -45,3 +45,4 @@ for i in range(steps):
     s1.angle(angle_size)
     # s1.angle(360,-1)
     time.sleep(1)
+
