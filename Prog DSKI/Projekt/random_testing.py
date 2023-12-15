@@ -44,12 +44,64 @@ def make_move(arr):
         print("something else")
     pass
 
+class Player():
+
+    def __init__(self, player_number, name, board) -> None: # player number 1 or 2
+        self.name = name
+        self.player_number = player_number
+        self.board = board
+        pass
+
+    def is_valid(self, move:tuple):
+        '''
+        erhält ein tuple von moves
+        prüft ob moves in valid raum ist
+        gibt true or false wieder
+        made by Dalia
+        '''
+        valid_row = 0 <= move[0] < self.board.shape[0]
+        valid_col = 0 <= move[1] < self.board.shape[1]
+        empty_cell = self.board[move[0]][move[1]] == 0
+        if valid_row and valid_col and empty_cell:
+            return True
+        return False
+    
+    def make_move(self): # -> (row, col)
+        move = (int(input("Please make a move: ")), int(input("")))
+        if self.is_valid(move, self.board):
+                return move
+        else:
+            raise ValueError("incoreect random number! Try again mister AI!!!") # ? müsste eig. an den anfang von make move springen!
+
+
+class Bot_simple(Player):
+
+    def __init__(self, player_number, name, board) -> None:
+        super().__init__(player_number, name, board)
+        pass
+
+    def make_move(self): # -> (row, col)
+        # when all slots are empty, choose a random point on the grid
+        if not np.any(self.board):
+            move = (random.randint(0, self.board.shape[0]-1),
+                    random.randint(0, self.board.shape[1]-1))
+        # if the move is valid, return the move
+            if self.is_valid(move):
+                print(f"the move to be made is {move}")
+                return move
+            else:
+                raise ValueError("incoreect random number! Try again mister AI!!!") # ? müsste eig. an den anfang von make move springen!
+
+            
+
 arr = np.zeros((6, 7), dtype=int)
+
+# testing_bot = Bot_simple(1, "testing", arr).make_move()
 
 print(arr)
 
 current_move = (3, 2)
 
-arr[current_move] = 1                
+arr[Bot_simple(1, "testing", arr).make_move()] = 1        
 
 print(arr)

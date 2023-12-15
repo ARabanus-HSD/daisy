@@ -18,16 +18,28 @@ class Player():
         gibt true or false wieder
         made by Dalia
         '''
-        valid_row = 0 <= move[0] < self.board.shape[0]
-        valid_col = 0 <= move[1] < self.board.shape[1]
-        empty_cell = self.board[move[0]][move[1]] == 0
-        if valid_row and valid_col and empty_cell:
-            return True
-        return False
+        # valid_row = 0 <= move[0] < self.board.shape[0]
+        # valid_col = 0 <= move[1] < self.board.shape[1]
+        # empty_cell = self.board[move[0]][move[1]] == 0
+        # if valid_row and valid_col and empty_cell:
+            # return True
+        # return False
+        """
+        alternative von Anton
+        """
+        # checks im move is in range of the size of the board
+        if move[0] < self.board.shape[0] and move[1] < self.board.shape[1]:
+            if self.board[move] == 0:
+                return True
+        else:
+            return False
+        # checks the cell that is to be changed is == 0
+
     
     def make_move(self): # -> (row, col)
+        print(f"make move between 0 and {self.board.shape[0]} \nand 0 and {self.board.shape[1]}")
         move = (int(input("Please make a move: ")), int(input("")))
-        if self.is_valid(move, self.board):
+        if self.is_valid(move):
                 return move
         else:
             raise ValueError("incoreect random number! Try again mister AI!!!") # ? müsste eig. an den anfang von make move springen!
@@ -58,13 +70,15 @@ class Bot_simple(Player):
         pass
 
     def make_move(self): # -> (row, col)
+        print(self.board)
         
         # when all slots are empty, choose a random point on the grid
         if not np.any(self.board):
-            move = (random.randint(self.board.shape[0]),
-                    random.randint(self.board.shape[1]))
+            move = (random.randint(0, self.board.shape[0]-1),
+                    random.randint(0, self.board.shape[1]-1))
         # if the move is valid, return the move
-            if self.is_valid(move, self.board):
+            if self.is_valid(move):
+                print(f"the move to be made is {move}")
                 return move
             else:
                 raise ValueError("incoreect random number! Try again mister AI!!!") # ? müsste eig. an den anfang von make move springen!

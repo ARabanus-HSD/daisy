@@ -91,8 +91,12 @@ class Game():
                 # -> check which class player is
                 # -> use its specific make_move
             # ALTERNATIVE? class make_move() an Player vererben (?)
-            breakpoint
-            current_move = players.Player.make_move(current_player)
+            current_move = players.Bot_simple.make_move(current_player)
+            # PROBLEM: ein hier muss eig. statt Player in player.Player.make_move()
+            #          immer das stehen was für spieler 1 und 2 gewählt wurde
+            #          ich weiss nicht wie man sowas macht. Mir fällt dazu auch nichts ein
+            #          5
+            
             print(current_move)
 
             self.board.board[current_move] = 1            
