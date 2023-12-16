@@ -37,12 +37,17 @@ class Player():
 
     
     def make_move(self): # -> (row, col)
+        """
+        fragt spielerzug ab und returned tuple mit zwei koordinaten
+        prüft mit is_valid ob der spielzug valid ist
+        """
         print(f"make move between 0 and {self.board.shape[0]} \nand 0 and {self.board.shape[1]}")
         move = (int(input("Please make a move: ")), int(input("")))
         if self.is_valid(move):
                 return move
         else:
             raise ValueError("incoreect random number! Try again mister AI!!!") # ? müsste eig. an den anfang von make move springen!
+            
 
 class Bot_random(Player):
 
@@ -81,7 +86,7 @@ class Bot_simple(Player):
                 print(f"the move to be made is {move}")
                 return move
             else:
-                raise ValueError("incoreect random number! Try again mister AI!!!") # ? müsste eig. an den anfang von make move springen!
+                raise ValueError("incorrect random number! Try again mister AI!!!") # ? müsste eig. an den anfang von make move springen!
 
             
 

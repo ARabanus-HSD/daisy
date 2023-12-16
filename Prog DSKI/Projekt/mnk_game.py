@@ -55,12 +55,12 @@ class Game():
         p1_choice = int(input("1 for human player | 2, 3, 4 for increasing bot difficulty: "))
         print(type(p1_name))
         print(type(p1_choice))
-        self.player1 = Game.choose_player(self, 1, p1_name, p1_choice)
+        self.player1 = self.choose_player(self, 1, p1_name, p1_choice)
 
         p2_name = str(input("input name: "))
         p2_choice = int(input("1 for human player | 2, 3, 4 for increasing bot difficulty: "))
 
-        self.player2 = Game.choose_player(self, 2, p2_name, p2_choice)   
+        self.player2 = self.choose_player(self, 2, p2_name, p2_choice)   
         pass
     
     def full_board(self):
@@ -91,21 +91,23 @@ class Game():
                 # -> check which class player is
                 # -> use its specific make_move
             # ALTERNATIVE? class make_move() an Player vererben (?)
-            current_move = players.Bot_simple.make_move(current_player)
+            # current_move = players.Bot_simple.make_move(current_player)
             # PROBLEM: ein hier muss eig. statt Player in player.Player.make_move()
             #          immer das stehen was für spieler 1 und 2 gewählt wurde
             #          ich weiss nicht wie man sowas macht. Mir fällt dazu auch nichts ein
-            #          5
-            
-            print(current_move)
-
-            self.board.board[current_move] = 1            
-            
+            #          5            
             if current_player == self.player1:
                 current_player = self.player2
+                current_move = current_player.make_move()
+                print(current_move)
+                self.board.board[current_move] = 1            
             else:
                 current_player = self.player1
-            
+                current_move = current_player.make_move()
+                print(current_move)
+                self.board.board[current_move] = 1            
+
+
             time.sleep(5)
 
         self.board.display()

@@ -1,5 +1,6 @@
 import numpy as np
-
+import mnk_all_players
+import mnk_game
 
 class Board():
 
