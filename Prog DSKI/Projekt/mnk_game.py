@@ -53,14 +53,14 @@ class Game():
         print("player 1:")
         p1_name = str(input("input name: "))
         p1_choice = int(input("1 for human player | 2, 3, 4 for increasing bot difficulty: "))
-        print(type(p1_name))
+        print(type(p1_name)) #frage von julia warum brauchen wir hier die types?
         print(type(p1_choice))
-        self.player1 = self.choose_player(self, 1, p1_name, p1_choice)
+        self.player1 = self.choose_player(1, p1_name, p1_choice)
 
         p2_name = str(input("input name: "))
         p2_choice = int(input("1 for human player | 2, 3, 4 for increasing bot difficulty: "))
 
-        self.player2 = self.choose_player(self, 2, p2_name, p2_choice)   
+        self.player2 = self.choose_player(2, p2_name, p2_choice)   
         pass
     
     def full_board(self):
