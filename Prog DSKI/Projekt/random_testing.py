@@ -68,7 +68,9 @@ class Player():
     
     def make_move(self): # -> (row, col)
         move = (int(input("Please make a move: ")), int(input("")))
-        if self.is_valid(move, self.board):
+        print(move)
+        print(type(move))
+        if self.is_valid(move):
                 return move
         else:
             raise ValueError("incoreect random number! Try again mister AI!!!") # ? müsste eig. an den anfang von make move springen!
@@ -93,15 +95,25 @@ class Bot_simple(Player):
                 raise ValueError("incoreect random number! Try again mister AI!!!") # ? müsste eig. an den anfang von make move springen!
 
             
+class Game():
+    
+    def __init__(self, m=6, n=7, k=4) -> None:
+        self.m = m
+        self.n = n
+        self.k = k  
+        pass
 
-arr = np.zeros((6, 7), dtype=int)
+    def game_loop(self):
+        arr = np.zeros((6, 7), dtype=int)
+        while True:
+            
+            print(arr)
 
-# testing_bot = Bot_simple(1, "testing", arr).make_move()
+            arr[Player(1, "testing", arr).make_move()] = 1        
 
-print(arr)
+            print(arr)
+        pass
 
-current_move = (3, 2)
 
-arr[Bot_simple(1, "testing", arr).make_move()] = 1        
-
-print(arr)
+current_game = Game()
+current_game.game_loop()
