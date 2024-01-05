@@ -49,6 +49,7 @@ class Board():
         pass
 
 
+
 class Player():
 
     def __init__(self, player_number, name, board) -> None: # player number 1 or 2
