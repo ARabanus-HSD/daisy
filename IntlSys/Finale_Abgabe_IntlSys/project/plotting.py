@@ -17,7 +17,7 @@ df_prisma = pd.read_csv(data_dir + m_5, header=None)
 
 # PLOTTING
 
-fig = plt.figure()
+fig = plt.figure(figsize=(16, 9), dpi=70)
 
 axis1 = fig.add_subplot(4, 1, 1)
 axis1.plot(df_dose, color="r")
