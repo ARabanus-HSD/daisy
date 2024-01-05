@@ -49,7 +49,6 @@ class Board():
         pass
 
 
-
 class Player():
 
     def __init__(self, player_number, name, board) -> None: # player number 1 or 2
@@ -149,10 +148,6 @@ class Bot_complex(Player):
         move = (1, 1)# (x, y) tuple where move is placed
         return move
 
-
-if __name__ == "__main__":
-    # hier kommt zeug zum testen hin
-    pass
 
 class Game():
     

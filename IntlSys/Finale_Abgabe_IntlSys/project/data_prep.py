@@ -26,8 +26,8 @@ def load_files_to_df(working_dir: str):
     return dataframes
 
 def norm_to_single_rotation(df):
-    num_rot = 3
-    angle_size = 5
+    num_rot = 10
+    angle_size = 360/60
 
     # removes not needed data from df
 
@@ -39,18 +39,32 @@ def norm_to_single_rotation(df):
     # split df into single full rotations
     # adjust interval so that graphs overlap
     df_1 = df.iloc[:interval]
-    df_2 = df.iloc[interval+9:2*interval-1]
-    df_3 = df.iloc[2*interval+20:-1]
+    df_2 = df.iloc[interval:2*interval]
+    df_3 = df.iloc[2*interval:3*interval]
+    df_4 = df.iloc[3*interval:4*interval]
+    df_5 = df.iloc[4*interval:5*interval]
+    df_6 = df.iloc[5*interval:6*interval]
+    df_7 = df.iloc[6*interval:7*interval]
+    df_8 = df.iloc[7*interval:8*interval]
+    df_9 = df.iloc[8*interval:9*interval]
+    df_10 = df.iloc[9*interval:-1]
 
     df_1.reset_index(inplace=True)
     df_2.reset_index(inplace=True)
     df_3.reset_index(inplace=True)
-
+    df_4.reset_index(inplace=True)
+    df_5.reset_index(inplace=True)
+    df_6.reset_index(inplace=True)
+    df_7.reset_index(inplace=True)
+    df_8.reset_index(inplace=True)
+    df_9.reset_index(inplace=True)
+    df_10.reset_index(inplace=True)
+    
     # split dataframeinto num_rot
 
     # make new headers with: [object, angle size, hcsr04_distance]
 
-    return df_1, df_2, df_3
+    return df_1, df_2, df_3, df_4, df_5, df_6, df_7, df_8, df_9, df_10
 
 def calculate_error():
     # compare scanned datapoints to ground truth
@@ -71,6 +85,9 @@ axis1 = fig.add_subplot(1, 1, 1)
 axis1.plot(single_rot_split[0].iloc[:, 3], color="r")
 axis1.plot(single_rot_split[1].iloc[:, 3], color="b")
 axis1.plot(single_rot_split[2].iloc[:, 3], color="g")
+axis1.plot(single_rot_split[3].iloc[:, 3], color="y")
+axis1.plot(single_rot_split[4].iloc[:, 3], color="c")
+axis1.plot(single_rot_split[5].iloc[:, 3], color="m")
 axis1.legend(["first rot", "second rot", "third rot"])
 
 plt.show()
