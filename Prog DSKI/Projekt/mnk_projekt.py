@@ -16,13 +16,13 @@ class Board():
             raise ValueError("k can't be larger than n or m")
         else:
             self.board = np.zeros(shape=(self.m, self.n), dtype=int)
-            return
+            
+        return
 
     def display(self):
         print(self.board)
-        pass
 
-    def has_won(self, current_player):
+    def has_won(self, current_player, k):
         """_summary_
         playerX has won when there is a k-long Pattern on the m x n board
         start checking for winning pattern after k moves
@@ -34,19 +34,31 @@ class Board():
         - if there is an entry in a neighbor cell, follow the direction k times. if the
               made by Dalia
         """
-        self.current_player = current_player
 
-        for x in self.board:
+        self.current_player = current_player
+        # check the rows
+        for row in self.board:
             count = 0
-            for value in x:
-                if value == self.current_player:
+        for cell in row:
+            if cell == current_player:
+                count += 1
+                if count == k:
+                    return True
+            else:
+                count = 0
+
+        # check the columns
+        for col in range(self.n):
+            count = 0
+            for row in self.board:
+                if row[col] == current_player:
                     count += 1
-                    if count == self.k:
+                    if count == k:
                         return True
                 else:
                     count = 0
-        # und jetzt noch für columns und diagonal, könnte aber auch alles falsch sein, ich teste gerade nichts
-        pass
+
+        return False
 
 
 
@@ -56,70 +68,65 @@ class Player():
         self.name = name
         self.player_number = player_number
         self.board = board
-        pass
+    
 
     def is_valid(self, move:tuple):
         '''
         erhält ein tuple von moves
         prüft ob moves in valid raum ist
         gibt true or false wieder
-        made by Dalia
-        '''
-        # valid_row = 0 <= move[0] < self.board.m
-        # valid_col = 0 <= move[1] < self.board.n
-        # empty_cell = self.board[] == 0
-        # if valid_row and valid_col and empty_cell:
-        #     return True
-        # return False
-        """
-        alternative von Anton
-        """
-        # checks im move is in range of the size of the board
 
-        # funktioniert nicht, remove wenn aufgeräumt wird
-        
+        '''
+
+        # checks if move is in range of the size of the board
         if move[0] < self.board.m and move[1] < self.board.n:
             print(self.board)
+            # checks the cell that is to be changed is == 0
             if self.board.board[move[0]][move[1]] == 0:
                 return True
         else:
             return False
-        # checks the cell that is to be changed is == 0
 
-    
+
+    # !! man muss noch hinzufügen, dass wenn was anderes als ein int eingegeben wird man es nochmal machen soll. bisher kommt nur valueerror
     def make_move(self): # -> (row, col)
         print(f"make move between 0 and {self.board.m} \nand 0 and {self.board.n}")
         move = (int(input("Please make a move: ")), int(input("")))
-        if self.is_valid(move):
-                return move
-        else:
-            # raise ValueError("incoreect random number! Try again mister AI!!!") # ? müsste eig. an den anfang von make move springen!
-            False
+        while not self.is_valid(move):
+            print('Invalid move. Please try again')
+            move = (int(input("Please make a move: ")), int(input("")))
+        return move
             
             
 class Bot_random(Player):
 
     def __init__(self, player_number, name, board) -> None:
         super().__init__(player_number, name, board)
-        pass
+        
         
     def make_move(self): # -> (row, col)
-        """erzeugt random move und fragt ab ob random move valid ist 
+        """
+        geht in eine schleife und wiederholt die erzeugung vom random move so lange bis es valid ist
         made by Dalia
         """
-        while True:
-            print(type(self.board))
+        
+        realitycheck = True
+        while realitycheck:
             move = (random.randint(0, self.board.m - 1), random.randint(0, self.board.n - 1))
             if self.is_valid(move):
+                realitycheck = False
+               # move = (random.randint(0, self.board.m - 1), random.randint(0, self.board.n - 1))
                 self.board.board[move[0]][move[1]] = self.player_number
                 return move
+            else:
+                print('Invalid move. Please try again')
 
 
 class Bot_simple(Player):
 
     def __init__(self, player_number, name, board) -> None:
         super().__init__(player_number, name, board)
-        pass
+        
 '''
     def make_move(self): # -> (row, col)
         print(self.board)
@@ -167,7 +174,7 @@ class Game():
         self.k = k
         self.player1 = player1
         self.player2 = player2      
-        pass
+
 
     def choose_player(self, p_number:int, p_name:str, choice:int):
         if choice == 1:
@@ -196,7 +203,6 @@ class Game():
     
     def start(self):
         # "Menü abfrage"
-
         # > choose board size
         self.m = int(input("gameboard height: "))
         self.n = int(input("gameboard width: "))
@@ -208,69 +214,52 @@ class Game():
         print("player 1:")
         p1_name = str(input("input name: "))
         p1_choice = int(input("1 for human player | 2, 3, 4 for increasing bot difficulty: "))
-        print(type(p1_name))
-        print(type(p1_choice))
         self.player1 = Game.choose_player(self, 1, p1_name, p1_choice)
 
         p2_name = str(input("input name: "))
         p2_choice = int(input("1 for human player | 2, 3, 4 for increasing bot difficulty: "))
-
         self.player2 = Game.choose_player(self, 2, p2_name, p2_choice)   
 
     
     def full_board(self):
-        # go through rows, check if values are 0 or not
-        # if any are 0 return false
-        # if not return True
         #made by Dalia
-        print(self.board)
-        # for row in enumerate(self.board):
-        #     for value in range(len(row)):
-
-        # # for row in self.board:
-        #     # for value in row:
-        #         if value == 0:
-        #             return False
-        # return True  
+        # goes through row and checks if value of every cell is 0
+        for row in self.board.board:
+            for value in row:
+                if value == 0:
+                    return False
+        return True  
 
     def game_loop(self):
         #made by Dalia
         current_player = random.choice([self.player1, self.player2])
-        while not self.full_board() and not self.board.has_won(current_player):
-            self.board.display() #oder irgendwas mit update oder so? 
+        while not self.full_board() and not self.board.has_won(current_player, self.k):
+            self.board.display()
             print(f"Player {current_player.name}'s turn")
-            
-            # problem! game loop weiss nicht welche class der current_player ist
-            # synatx müsste sein: players.Player.make_move()
-            # oder                players.Bot_random.make_move()
-                # -> check which class player is
-                # -> use its specific make_move
-            # ALTERNATIVE? class make_move() an Player vererben (?)
-     # current_move = Bot_simple.make_move(current_player)
-            current_move = current_player.make_move()
-            # PROBLEM: ein hier muss eig. statt Player in player.Player.make_move()
-            #          immer das stehen was für spieler 1 und 2 gewählt wurde
-            #          ich weiss nicht wie man sowas macht. Mir fällt dazu auch nichts ein
-            #          5
-            
+            # gets the current move the player inputed
+            current_move = current_player.make_move()  
             print(current_move)
-
-            self.board.board[current_move] = 1            
             
+            # makes the move on the board
+            self.board.board[current_move] = current_player.player_number
+            
+            # checks if someone has won and if the board is full
+            if self.board.has_won(current_player.player_number, self.k):
+                print(f"{current_player.player_number} wins!")
+                break
+            elif self.full_board():
+                print('The board is full. Nobody won!')
+                break
+            
+            # changes player 
             if current_player == self.player1:
                 current_player = self.player2
             else:
                 current_player = self.player1
+                
+            time.sleep(1)    
             
-            time.sleep(5)
-
         self.board.display()
-        if self.board.has_won(self.player1):
-            print("Player 1 wins!")
-        elif self.board.has_won(self.player2):
-            print("Player 2 wins!")
-        else:
-            print("It's a draw!")
 
 if __name__ == "__main__":
     # game_m = int(input())
