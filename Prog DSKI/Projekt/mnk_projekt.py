@@ -206,7 +206,7 @@ class Game():
         p2_name = str(input("input name: "))
         p2_choice = int(input("1 for human player | 2, 3, 4 for increasing bot difficulty: "))
 
-        self.player2 = Game.choose_player(self, 2, p2_name, p2_choice)   
+        self.player2 = Game.choose_player(self, 2, p2_name, p2_choice)
         pass
     
     def full_board(self):
@@ -229,7 +229,7 @@ class Game():
         current_player = random.choice([self.player1, self.player2])
         while not self.full_board() and not self.board.has_won(current_player):
             self.board.display() #oder irgendwas mit update oder so? 
-            print(f"Player {current_player}'s turn")
+            print(f"Player {current_player.name}'s turn")
             
             # problem! game loop weiss nicht welche class der current_player ist
             # synatx müsste sein: players.Player.make_move()
@@ -237,7 +237,7 @@ class Game():
                 # -> check which class player is
                 # -> use its specific make_move
             # ALTERNATIVE? class make_move() an Player vererben (?)
-            current_move = Bot_simple.make_move(current_player)
+            current_move = current_player.make_move()
             # PROBLEM: ein hier muss eig. statt Player in player.Player.make_move()
             #          immer das stehen was für spieler 1 und 2 gewählt wurde
             #          ich weiss nicht wie man sowas macht. Mir fällt dazu auch nichts ein
@@ -272,3 +272,4 @@ if __name__ == "__main__":
     
     current_game.start()
     current_game.game_loop()
+    #arr = np.zeros((6, 7), dtype=int)

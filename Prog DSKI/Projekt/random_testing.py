@@ -1,5 +1,7 @@
 import numpy as np
+import time
 import random
+
 
 def keep_cross(input_array, n_row, n_col):
     """
@@ -84,15 +86,15 @@ class Bot_simple(Player):
 
     def make_move(self): # -> (row, col)
         # when all slots are empty, choose a random point on the grid
-        if not np.any(self.board):
-            move = (random.randint(0, self.board.shape[0]-1),
-                    random.randint(0, self.board.shape[1]-1))
-        # if the move is valid, return the move
-            if self.is_valid(move):
-                print(f"the move to be made is {move}")
-                return move
-            else:
-                raise ValueError("incoreect random number! Try again mister AI!!!") # ? müsste eig. an den anfang von make move springen!
+        #if not np.any(self.board):
+        move = (random.randint(0, self.board.shape[0]-1),
+                random.randint(0, self.board.shape[1]-1))
+        # i the move is valid, return the move
+        if self.is_valid(move):
+            print(f"the move to be made is {move}")
+            return move
+        else:
+            raise ValueError("incoreect random number! Try again mister AI!!!") # ? müsste eig. an den anfang von make move springen!
 
             
 class Game():
@@ -109,9 +111,10 @@ class Game():
             
             print(arr)
 
-            arr[Player(1, "testing", arr).make_move()] = 1        
+            arr[Player(1, "testing", arr).make_move()] = 1       
 
             print(arr)
+            time.sleep(0)
         pass
 
 
