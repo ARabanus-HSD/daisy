@@ -1,6 +1,7 @@
 import numpy as np
 import random
 import time
+import math
 
 
 class Board():
@@ -116,20 +117,41 @@ class Bot_simple(Player):
         super().__init__(player_number, name, board)
         pass
 
+
     def make_move(self): # -> (row, col)
-        print(self.board)
-        
-        # when all slots are empty, choose a random point on the grid
-        if not np.any(self.board):
-            move = (random.randint(0, self.board.shape[0]-1),
-                    random.randint(0, self.board.shape[1]-1))
-        # if the move is valid, return the move
+        """
+        goal of this bot: only try and win (be better than random bot)
+        if the board is empty, place an entry k/2 away from the edges
+            placed @ (m_i, n_i)
+        if there is one placed entry, pick a random neighboring entry to fill
+            placed @ (m_i+-1, n_i+-1)
+        if there are two in line, continue along that line             
+        """
+        reality_check = True
+        while reality_check:
+            # stage one
+            if self.player_number not in self.board.board[:, :]:#not np.any(self.board.board[:, :] == self.player_number):
+                print("in for loop for first placement")
+                distance_from_edge = math.floor(self.board.k/2) # halves wining length, rounds down if k/2 is a float
+                move = (random.randint(0 + distance_from_edge, self.board.m - 1 - distance_from_edge),
+                        random.randint(0 + distance_from_edge, self.board.n - 1 - distance_from_edge))
+                print(move)
+            #stage two
+            elif self.player_number in self.board.board[:, :]: # goes here if theres 1 or more atm, should only go here if theres 1!
+                print("board not empty")
+                first_move = (np.argwhere(self.board.board == self.player_number)[0, 0],
+                              np.argwhere(self.board.board == self.player_number)[0, 1])
+                print(first_move)
+                move = (random.randint(first_move[0] - 1, first_move[0] + 1),
+                        random.randint(first_move[1] - 1, first_move[1] + 1))
+
             if self.is_valid(move):
-                print(f"the move to be made is {move}")
+                reality_check = False
+                    #self.board.board[move[0]][move[1]] = self.player_number
                 return move
             else:
                 raise ValueError("incoreect random number! Try again mister AI!!!") # ? müsste eig. an den anfang von make move springen!
-
+'''
             
 
         # "look" at board
@@ -173,7 +195,7 @@ class Game():
             return player
         elif choice == 3:
             player = Bot_simple(p_number, p_name, self.board)
-            print("player is not a random bot")
+            print("player is a simple bot")
             print(20*"-")
             return player
         elif choice == 4:
@@ -245,14 +267,14 @@ class Game():
             
             print(current_move)
 
-            self.board.board[current_move] = 1            
+            self.board.board[current_move] = current_player.player_number          
             
             if current_player == self.player1:
                 current_player = self.player2
             else:
                 current_player = self.player1
             
-            time.sleep(5)
+            time.sleep(1)
 
         self.board.display()
         if self.board.has_won(self.player1):
