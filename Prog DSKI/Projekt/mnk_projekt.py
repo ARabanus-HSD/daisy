@@ -27,26 +27,23 @@ class Board():
         playerX has won when there is a k-long Pattern on the m x n board
         start checking for winning pattern after k moves
         
-        checking process:
-        - pick a placed move of the player that just went
-        - check if surrounding 8 array cells have the same label
-        - if not, next player
-        - if there is an entry in a neighbor cell, follow the direction k times. if the
+        !! checking diagonally misses
               made by Dalia
         """
 
         self.current_player = current_player
-        # check the rows
-        for row in self.board:
-            count = 0
-        for cell in row:
-            if cell == current_player:
-                count += 1
-                if count == k:
-                    return True
-            else:
-                count = 0
 
+        # check for rows
+        for col in range(self.n):
+            count = 0
+            for row in self.board.T:
+                if row[col] == current_player:
+                    count += 1
+                    if count == k:
+                        return True
+                else:
+                    count = 0
+                    
         # check the columns
         for col in range(self.n):
             count = 0
@@ -238,14 +235,14 @@ class Game():
             print(f"Player {current_player.name}'s turn")
             # gets the current move the player inputed
             current_move = current_player.make_move()  
-            print(current_move)
+            # print(current_move)
             
-            # makes the move on the board
+            # puts the move on the board
             self.board.board[current_move] = current_player.player_number
             
             # checks if someone has won and if the board is full
             if self.board.has_won(current_player.player_number, self.k):
-                print(f"{current_player.player_number} wins!")
+                print(f"Player {current_player.name} wins!")
                 break
             elif self.full_board():
                 print('The board is full. Nobody won!')
