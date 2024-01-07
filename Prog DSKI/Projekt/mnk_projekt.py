@@ -88,7 +88,7 @@ class Player():
 
     # !! man muss noch hinzufügen, dass wenn was anderes als ein int eingegeben wird man es nochmal machen soll. bisher kommt nur valueerror
     def make_move(self): # -> (row, col)
-        print(f"make move between 0 and {self.board.m} \nand 0 and {self.board.n}")
+        print(f"make move between 0 and {self.board.m-1} \nand 0 and {self.board.n-1}")
         move = (int(input("Please make a move: ")), int(input("")))
         while not self.is_valid(move):
             print('Invalid move. Please try again')
@@ -125,6 +125,7 @@ class Bot_simple(Player):
         super().__init__(player_number, name, board)
         pass
 
+    
     def make_move(self): # -> (row, col)
         """
         goal of this bot: only try and win (be better than random bot)
@@ -134,8 +135,8 @@ class Bot_simple(Player):
             placed @ (m_i+-1, n_i+-1)
         if there are two in line, continue along that line             
         """
-        reality_check = True
-        while reality_check:
+        valid_move = True
+        while valid_move:
             # stage one
             if self.player_number not in self.board.board[:, :]:#not np.any(self.board.board[:, :] == self.player_number):
                 print("in for loop for first placement")
@@ -151,9 +152,20 @@ class Bot_simple(Player):
                 print(first_move)
                 move = (random.randint(first_move[0] - 1, first_move[0] + 1),
                         random.randint(first_move[1] - 1, first_move[1] + 1))
+            else:
+                # what is a line in an array
+                # v_line: (m_i, n_i) ... (m_i, n_i+k)
+                # h_line: (m_i, n_i) ... (m_i+k, n_i)
+                # d_line_1: (m_i, n_i) ... (m_i+k, n_i+k)
+                # d_line_2: (m_i, n_i) ... (m_i+k, n_i-k)
+                # using np.argwhere gets the coord for each placed entry
+                # finds line checking if one of the four sum funcs above would apply.
+                past_moves = np.argwhere(self.board.board == self.player_number)
+                print(past_moves)
+                pass
 
             if self.is_valid(move):
-                reality_check = False
+                valid_move = False
                     #self.board.board[move[0]][move[1]] = self.player_number
                 return move
             else:
