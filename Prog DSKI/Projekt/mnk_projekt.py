@@ -2,6 +2,7 @@ import numpy as np
 import random
 import time
 import math
+from datetime import datetime
 
 
 class Board():
@@ -140,26 +141,26 @@ class Bot_simple(Player):
         while valid_move:
             # stage one
             if self.player_number not in self.board.board[:, :]:#not np.any(self.board.board[:, :] == self.player_number):
-                print("in for loop for first placement")
+                # print("in for loop for first placement")
                 distance_from_edge = math.floor(self.board.k/2) # halves wining length, rounds down if k/2 is a float
                 move = (random.randint(0 + distance_from_edge, self.board.m - 1 - distance_from_edge),
                         random.randint(0 + distance_from_edge, self.board.n - 1 - distance_from_edge))
-                print(move)
+                # print(move)
             #stage two
             elif self.player_number in self.board.board[:, :] and np.argwhere(self.board.board == self.player_number).shape[0] == 1: # goes here if theres 1 or more atm, should only go here if theres 1!
-                print("in loop for second placement")
-                print("\n", np.argwhere(self.board.board == self.player_number), "\n")
+                # print("in loop for second placement")
+                # print("\n", np.argwhere(self.board.board == self.player_number), "\n")
 
                 first_move = (np.argwhere(self.board.board == self.player_number)[0, 0],
                               np.argwhere(self.board.board == self.player_number)[0, 1])
 
-                print(first_move)
+                # print(first_move)
 
                 original_move = False
                 while not original_move:
                     move = (random.randint(first_move[0] - 1, first_move[0] + 1),
                             random.randint(first_move[1] - 1, first_move[1] + 1))
-                    print(move)
+                    # print(move)
                     if not move == first_move:
                         original_move = True
 
@@ -186,7 +187,7 @@ class Bot_simple(Player):
                     y_next_move = random.choice([np.min(past_moves[:, 1]) - 1,
                                                  np.max(past_moves[:, 1]) + 1])
                     move = (x_next_move, y_next_move)
-                    print(move)
+                    # print(move)
                 # find v_line
                 elif np.all(past_moves[:, 1] == past_moves[0, 1]):
                     # print(past_moves[:, 1])
@@ -201,7 +202,7 @@ class Bot_simple(Player):
                 elif valid_counter > 5:
                     move = (random.randint(0, self.board.m - 1),
                             random.randint(0, self.board.n - 1))
-                    print(move)
+                    # print(move)
             
                 else:
                     # print("must be diagonal line!")
@@ -210,7 +211,7 @@ class Bot_simple(Player):
                     y_next_move = random.choice([np.min(past_moves[:, 0]) - 1,
                                                  np.max(past_moves[:, 0]) + 1])
                     move = (x_next_move, y_next_move)
-                    print(move)
+                    # print(move)
 
             if self.is_valid(move):
                 valid_move = False
@@ -220,9 +221,8 @@ class Bot_simple(Player):
                 return move
             else:
                 valid_counter += 1
-                print("invalid move")
-                print(valid_counter)
-                time.sleep(1)
+                # print("invalid move")
+                # print(valid_counter)
 
         pass
 
@@ -279,6 +279,9 @@ class Game():
 
 
     def start(self):
+        now = datetime.now()
+        self.unique_game_id = now.strftime("%y%m%d_%H-%M-%S")
+
         # "Menü abfrage"
         # > choose board size
         self.m = int(input("gameboard height: "))
@@ -316,10 +319,18 @@ class Game():
             # gets the current move the player inputed
             current_move = current_player.make_move()
             # print(current_move)
-
+            
             # puts the move on the board
             self.board.board[current_move] = current_player.player_number
-
+            
+            f = open(f"gamelog_{self.unique_game_id}.txt", "a")
+            as_string = str(current_move)
+            line_4_log = f"{current_player.player_number}, {as_string}"
+            print(line_4_log)
+            f.write(line_4_log)
+            f.write("\n")
+            f.close()
+            
             # checks if someone has won and if the board is full
             if self.board.has_won(current_player.player_number, self.k):
                 print(f"Player {current_player.name} wins!")
@@ -334,7 +345,7 @@ class Game():
             else:
                 current_player = self.player1
 
-            time.sleep(0.5)
+            # time.sleep(0.5)
 
         self.board.display()
 
