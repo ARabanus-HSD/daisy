@@ -1,6 +1,7 @@
 import numpy as np
 import random
 import time
+import math
 
 
 class Board():
@@ -118,33 +119,47 @@ class Bot_random(Player):
             else:
                 print('Invalid move. Please try again')
 
-
 class Bot_simple(Player):
 
     def __init__(self, player_number, name, board) -> None:
         super().__init__(player_number, name, board)
-        
-'''
+        pass
+
     def make_move(self): # -> (row, col)
-        print(self.board)
-        
-        # when all slots are empty, choose a random point on the grid
-        if not np.any(self.board):
-            move = (random.randint(0, self.board.shape[0]-1),
-                    random.randint(0, self.board.shape[1]-1))
-        # if the move is valid, return the move
+        """
+        goal of this bot: only try and win (be better than random bot)
+        if the board is empty, place an entry k/2 away from the edges
+            placed @ (m_i, n_i)
+        if there is one placed entry, pick a random neighboring entry to fill
+            placed @ (m_i+-1, n_i+-1)
+        if there are two in line, continue along that line             
+        """
+        reality_check = True
+        while reality_check:
+            # stage one
+            if self.player_number not in self.board.board[:, :]:#not np.any(self.board.board[:, :] == self.player_number):
+                print("in for loop for first placement")
+                distance_from_edge = math.floor(self.board.k/2) # halves wining length, rounds down if k/2 is a float
+                move = (random.randint(0 + distance_from_edge, self.board.m - 1 - distance_from_edge),
+                        random.randint(0 + distance_from_edge, self.board.n - 1 - distance_from_edge))
+                print(move)
+            #stage two
+            elif self.player_number in self.board.board[:, :]: # goes here if theres 1 or more atm, should only go here if theres 1!
+                print("board not empty")
+                first_move = (np.argwhere(self.board.board == self.player_number)[0, 0],
+                              np.argwhere(self.board.board == self.player_number)[0, 1])
+                print(first_move)
+                move = (random.randint(first_move[0] - 1, first_move[0] + 1),
+                        random.randint(first_move[1] - 1, first_move[1] + 1))
+
             if self.is_valid(move):
-                print(f"the move to be made is {move}")
+                reality_check = False
+                    #self.board.board[move[0]][move[1]] = self.player_number
                 return move
             else:
-                raise ValueError("incoreect random number! Try again mister AI!!!") # ? müsste eig. an den anfang von make move springen!
-'''
-            
+                print("invalid move")
 
-        # "look" at board
-        # start at center of board
-        # search for row/col/diagonal with at least k free slots
-        # place on move on first slot that fulfills criteria
+        pass
 
 
 class Bot_complex(Player):
