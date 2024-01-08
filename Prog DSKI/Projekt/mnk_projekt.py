@@ -31,6 +31,8 @@ class Board():
 
         !! checking diagonally misses
               made by Dalia
+
+        checking diagonally added by Anton 08.Jan
         """
 
         self.current_player = current_player
@@ -129,12 +131,14 @@ class Bot_simple(Player):
 
     def make_move(self): # -> (row, col)
         """
-        goal of this bot: only try and win (be better than random bot)
-        if the board is empty, place an entry k/2 away from the edges
-            placed @ (m_i, n_i)
-        if there is one placed entry, pick a random neighboring entry to fill
-            placed @ (m_i+-1, n_i+-1)
-        if there are two in line, continue along that line
+        # bot_simple
+        works in three stages:
+        ## Stage 1:
+        - places a random entry in the center section of the Spielfeld
+            - k/2 from the edges
+        ## Stage 2:
+        - places second on one of the tiles next to the previous placement
+        ## Stage 3:
         """
         valid_move = True
         valid_counter = 1
