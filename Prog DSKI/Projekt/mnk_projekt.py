@@ -56,7 +56,37 @@ class Board():
                         return True
                 else:
                     count = 0
-
+                    
+        #check for diagonals (rechts nach links) saaaaaaffeeee ist das falsch
+        for col in range(self.n):
+            count = 0
+            for row in self.board:
+                if row[col] == current_player:
+                    count += 1
+                    while count >= 1 is True:
+                        for something in range(k):
+                            if self.board[row+1][col+1] == current_player:
+                                count += 1
+                    if count == k:
+                        return True
+                    else:
+                        count = 0
+                    
+        #check for diagonals (links nach rechts) same here
+        for col in range(self.n):
+            count = 0
+            for row in self.board:
+                if row[col] == current_player:
+                    count += 1
+                    while count >= 1 is True:
+                        for something in range(k):
+                            if self.board[row-1][col-1] == current_player:
+                                count += 1
+                    if count == k:
+                        return True
+                    else:
+                        count = 0
+                        
         return False
 
 
@@ -87,18 +117,18 @@ class Player():
             return False
 
 
-    # !! man muss noch hinzufügen, dass wenn was anderes als ein int eingegeben wird man es nochmal machen soll. bisher kommt nur valueerror
+    # !! man kann nur einen value error causen, bevor das Spiel abbricht :(
     def make_move(self): # -> (row, col)
         print(f"make move between 0 and {self.board.m-1} \nand 0 and {self.board.n-1}")
-        move = (int(input("Please make a move: ")), int(input("")))
-        if ValueError:
+        try: move = (int(input("Please make a move: ")), int(input("")))
+        except ValueError:
             print("Sorry please put an integer")
-            move = (int(input("Please make a move: ")), int(input("")))
+        move = (int(input("Please make a move: ")), int(input("")))
         while not self.is_valid(move):
             print('Invalid move. Please try again')
             move = (int(input("Please make a move: ")), int(input("")))
         return move
-
+        
 
 class Bot_random(Player):
 
