@@ -91,6 +91,9 @@ class Player():
     def make_move(self): # -> (row, col)
         print(f"make move between 0 and {self.board.m-1} \nand 0 and {self.board.n-1}")
         move = (int(input("Please make a move: ")), int(input("")))
+        if ValueError:
+            print("Sorry please put an integer")
+            move = (int(input("Please make a move: ")), int(input("")))
         while not self.is_valid(move):
             print('Invalid move. Please try again')
             move = (int(input("Please make a move: ")), int(input("")))
