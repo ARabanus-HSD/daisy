@@ -34,11 +34,12 @@ from sklearn.model_selection import train_test_split
 
 digits = datasets.load_digits()
 
-_, axes = plt.subplots(nrows=1, ncols=4, figsize=(10, 3))
-for ax, image, label in zip(axes, digits.images, digits.target):
-    ax.set_axis_off()
-    ax.imshow(image, cmap=plt.cm.gray_r, interpolation="nearest")
-    ax.set_title("Training: %i" % label)
+
+# _, axes = plt.subplots(nrows=1, ncols=4, figsize=(10, 3))
+# for ax, image, label in zip(axes, digits.images, digits.target):
+#     ax.set_axis_off()
+#     ax.imshow(image, cmap=plt.cm.gray_r, interpolation="nearest")
+#     ax.set_title("Training: %i" % label)
 
 ###############################################################################
 # Classification
@@ -102,7 +103,7 @@ disp = metrics.ConfusionMatrixDisplay.from_predictions(y_test, predicted)
 disp.figure_.suptitle("Confusion Matrix")
 print(f"Confusion matrix:\n{disp.confusion_matrix}")
 
-plt.show()
+# plt.show()
 
 ###############################################################################
 # If the results from evaluating a classifier are stored in the form of a
@@ -123,7 +124,7 @@ for gt in range(len(cm)):
         y_true += [gt] * cm[gt][pred]
         y_pred += [pred] * cm[gt][pred]
 
-print(
-    "Classification report rebuilt from confusion matrix:\n"
-    f"{metrics.classification_report(y_true, y_pred)}\n"
-)
+# print(
+    # "Classification report rebuilt from confusion matrix:\n"
+    # f"{metrics.classification_report(y_true, y_pred)}\n"
+# )

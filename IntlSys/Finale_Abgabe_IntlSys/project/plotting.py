@@ -3,8 +3,8 @@ import pandas as pd
 
 data_dir = "/home/arabanus/Desktop/intlsys_logs/"
 m_1 = "logfile_deo_dose_53mm.txt"
-m_2 = "logfile_rubiks_cube.txt"
-m_3 = "logfile_rubiks_cube.txt"
+m_2 = "logfile_rubicscube_1.txt"
+m_3 = "logfile_rubicscube_zweite_messung.txt"
 m_4 = "logfile_dose_zweite_messung.txt"
 m_5 = "logfile_dose_dritte_messung.txt"
 
@@ -48,7 +48,7 @@ for i in range(9):
     axis4.axvline(x = 61 + i*61, color="g", label="rotation")
 
 axis5 = fig.add_subplot(5, 1, 5)
-axis5.plot(df_cube, color="r")
+axis5.plot(df_cube2, color="r")
 #axis5.plot(df_empty, color="b")
 axis5.legend(["cube 2"])
 for i in range(9):
