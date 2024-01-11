@@ -272,65 +272,61 @@ class Bot_complex(Player):
         return move
 
 
-if __name__ == "__main__":
-    # hier kommt zeug zum testen hin
-    pass
+# if __name__ == "__main__":
+#     # hier kommt zeug zum testen hin
+#     pass
 
 class Game():
-<<<<<<< Updated upstream
 
-    def __init__(self, m=6, n=7, k=4, player1=0, player2=0):
-=======
-    
+
     def __init__(self, m=6, n=7, k=4, player1=None, player2=None):
->>>>>>> Stashed changes
+#
         self.m = m
         self.n = n
         self.k = k
         self.player1 = player1
-<<<<<<< Updated upstream
-        self.player2 = player2
-=======
         self.player2 = player2   
         self.board = None
->>>>>>> Stashed changes
+#>>>>>>> Stashed changes
 
 
     def choose_player(self, p_number:int, p_name:str, choice:int):
-        if choice == 1:
-            player = Player(p_number, p_name, self.board)
-            print("player is human")
-            print(20*"-")
-            return player
-        elif choice == 2:
-            player = Bot_random(p_number, p_name, self.board)
-            print("player is a random bot")
-            print(20*"-")
-            return player
-        elif choice == 3:
-            player = Bot_simple(p_number, p_name, self.board)
-            print("player is a simple bot")
-            print(20*"-")
-            return player
-        elif choice == 4:
-            player = Bot_complex(p_number, p_name, self.board)
-            print("player is a complex bot")
-            print(20*"-")
-            return player
-        else:
-            raise ValueError("input number out of range, please retry!")
-<<<<<<< Updated upstream
+        valid_choices = [1, 2, 3, 4]
 
+        if choice in valid_choices:
+            if choice == 1:
+                player = Player(p_number, p_name, self.board)
+                print("player is human")
+                print(20*"-")
+                return player
+            elif choice == 2:
+                player = Bot_random(p_number, p_name, self.board)
+                print("player is a random bot")
+                print(20*"-")
+                return player
+            elif choice == 3:
+                player = Bot_simple(p_number, p_name, self.board)
+                print("player is a simple bot")
+                print(20*"-")
+                return player
+            elif choice == 4:
+                player = Bot_complex(p_number, p_name, self.board)
+                print("player is a complex bot")
+                print(20*"-")
+                return player
+            else:
+                raise ValueError("input number out of range, please retry!")
+#<<<<<<< Updated upstream
 
-    def start(self):
-        now = datetime.now()
-        self.unique_game_id = now.strftime("%y%m%d_%H-%M-%S")
+    # def start(self):
+    #     now = datetime.now()
+    #     self.unique_game_id = now.strftime("%y%m%d_%H-%M-%S")
 
-=======
+#=======
     
     
     def start(self, player1_type, player2_type):
->>>>>>> Stashed changes
+#>>>>>>> Stashed changes
         # "Menü abfrage"
         # > choose board size
         # self.m = int(input("gameboard height: "))
@@ -349,16 +345,16 @@ class Game():
         # p1_choice = int(input("1 for human player | 2, 3, 4 for increasing bot difficulty: "))
         # self.player1 = Game.choose_player(self, 1, p1_name, p1_choice)
 
-<<<<<<< Updated upstream
-        p2_name = str(input("input name: "))
-        p2_choice = int(input("1 for human player | 2, 3, 4 for increasing bot difficulty: "))
-        self.player2 = Game.choose_player(self, 2, p2_name, p2_choice)
+#<<<<<<< Updated upstream
+        # p2_name = str(input("input name: "))
+        # p2_choice = int(input("1 for human player | 2, 3, 4 for increasing bot difficulty: "))
+        # self.player2 = Game.choose_player(self, 2, p2_name, p2_choice)
 
-=======
+#=======
         # p2_name = str(input("input name: "))
         # p2_choice = int(input("1 for human player | 2, 3, 4 for increasing bot difficulty: "))
         # self.player2 = Game.choose_player(self, 2, p2_name, p2_choice)   
->>>>>>> Stashed changes
+#>>>>>>> Stashed changes
 
     def full_board(self):
         #made by Dalia
@@ -382,13 +378,13 @@ class Game():
             # puts the move on the board
             self.board.board[current_move] = current_player.player_number
             
-            f = open(f"gamelog_{self.unique_game_id}.txt", "a")
-            as_string = str(current_move)
-            line_4_log = f"{current_player.player_number}, {as_string}"
-            print(line_4_log)
-            f.write(line_4_log)
-            f.write("\n")
-            f.close()
+            # f = open(f"gamelog_{self.unique_game_id}.txt", "a")
+            # as_string = str(current_move)
+            # line_4_log = f"{current_player.player_number}, {as_string}"
+            # print(line_4_log)
+            # f.write(line_4_log)
+            # f.write("\n")
+            # f.close()
             
             # checks if someone has won and if the board is full
             if self.board.has_won(current_player.player_number, self.k):
@@ -408,13 +404,13 @@ class Game():
 
         self.board.display()
 
-if __name__ == "__main__":
-    # game_m = int(input())
-    # game_n = int(input())
-    # game_k = int(input())
-    # current_game = Game(game_m, game_n, game_k)
+# if __name__ == "__main__":
+#     # game_m = int(input())
+#     # game_n = int(input())
+#     # game_k = int(input())
+#     # current_game = Game(game_m, game_n, game_k)
+    
+#     current_game = Game()
 
-    current_game = Game()
-
-    current_game.start()
-    current_game.game_loop()
+#     current_game.start(player1_type, player2_type)
+#     current_game.game_loop()

@@ -82,15 +82,16 @@ class MainMenu(QMainWindow):
         player1_label.setStyleSheet("color: white;")  # Set font color to white
 
         # Create a horizontal layout for "Enter player name" label and text box
-        player_name_layout = QHBoxLayout()  
-        player_name_label = QLabel("Enter player name:", self)
-        player_name_label.setFont(chalk_font)
-        player_name_label.setStyleSheet("color: white;")  # Set font color to white
-        player_name_input = QLineEdit(self)
-        player_name_input.setStyleSheet("color: white; margin-bottom: 0px;")
-        player_name_input.setFont(chalk_font)
-        player_name_layout.addWidget(player_name_label)
-        player_name_layout.addWidget(player_name_input)
+        player1_name_layout = QHBoxLayout()  
+        player1_name_label = QLabel("Enter player name:", self)
+        player1_name_label.setFont(chalk_font)
+        player1_name_label.setStyleSheet("color: white;")  # Set font color to white
+        
+        self.player1_name_input = QLineEdit(self)
+        self.player1_name_input.setStyleSheet("color: white; margin-bottom: 0px;")
+        self.player1_name_input.setFont(chalk_font)
+        player1_name_layout.addWidget(player1_name_label)
+        player1_name_layout.addWidget(self.player1_name_input)
 
         
        #  Buttons
@@ -119,11 +120,12 @@ class MainMenu(QMainWindow):
         player2_name_label = QLabel("Enter player name:", self)
         player2_name_label.setFont(chalk_font)
         player2_name_label.setStyleSheet("color: white;")  # Set font color to white
-        player2_name_input = QLineEdit(self)
-        player2_name_input.setStyleSheet("color: white; margin-bottom: 0px;")
-        player2_name_input.setFont(chalk_font)
+        
+        self.player2_name_input = QLineEdit(self)
+        self.player2_name_input.setStyleSheet("color: white; margin-bottom: 0px;")
+        self.player2_name_input.setFont(chalk_font)
         player2_name_layout.addWidget(player2_name_label)
-        player2_name_layout.addWidget(player2_name_input)
+        player2_name_layout.addWidget(self.player2_name_input)
 
         
        #  #Buttons
@@ -150,7 +152,7 @@ class MainMenu(QMainWindow):
         
         # Player 1
         main_layout.addWidget(player1_label)
-        main_layout.addLayout(player_name_layout)
+        main_layout.addLayout(player1_name_layout)
         main_layout.addWidget(player1_type_label)
         # Add player type buttons to layout
         for button in self.player1_buttons:
@@ -222,15 +224,21 @@ class MainMenu(QMainWindow):
         n = int(self.n_input.text())
         k = int(self.k_input.text())
 
+
+        # Get name 
+        player1_name = self.player1_name_input.text()
+        player2_name = self.player2_name_input.text()
         # Get the selected player types
         player1_type = self.get_selected_button_value(self.player1_buttons)
         player2_type = self.get_selected_button_value(self.player2_buttons)
-        print(player1_type)
-        print(player2_type)
+        # print(player1_type)
+        # print(player2_type)
 
         # Create MNK game instance and start the game with the chosen options
-        current_game = Game(m, n, k, player1_type, player2_type)
-        current_game.start(player1_type, player2_type)
+        current_game = Game(m, n, k)
+        player1 = current_game.choose_player(1, player1_name, player1_type)
+        player2 = current_game.choose_player(2, player2_name, player2_type)
+        current_game.start(player1, player2)
         current_game.game_loop()
         
         # Show the game board window
