@@ -67,9 +67,18 @@ axis4.legend(["cube"])
 for i in range(9):
     axis4.axvline(x = 61 + i*61, color="g", label="rotation")
 
+    
+
 axis5 = fig.add_subplot(5, 1, 5)
+
+
+ilausdkjhflaskh;dljflahjd;jf
+
+
+
+asldifugpa7rgte8pofihgowbe8uyf 7baen
+
 axis5.plot(df_cube2, color="r")
-#axis5.plot(df_empty, color="b")
 axis5.legend(["cube 2"])
 for i in range(9):
     axis5.axvline(x = 61 + i*61, color="g", label="rotation")
